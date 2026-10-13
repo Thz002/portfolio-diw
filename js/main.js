@@ -128,7 +128,9 @@ const frases = {
     erroMensagem: "A mensagem precisa de pelo menos 10 caracteres.",
     formEnviando: "Enviando...",
     formEnviado: "Mensagem enviada! Obrigado pelo contato.",
-    formErro: "Não consegui enviar agora. Tente de novo em instantes."
+    atualizado: "atualizado em",
+    abrirGithub: "Abrir no GitHub",
+    semDescricao: "Sem descrição."
   },
   en: {
     repoGithub: "Repository on GitHub",
@@ -142,7 +144,9 @@ const frases = {
     erroMensagem: "The message needs at least 10 characters.",
     formEnviando: "Sending...",
     formEnviado: "Message sent! Thanks for reaching out.",
-    formErro: "I couldn't send it right now. Please try again in a moment."
+    atualizado: "updated",
+    abrirGithub: "Open on GitHub",
+    semDescricao: "No description."
   }
 };
 
@@ -316,6 +320,7 @@ function trocarIdioma(novo) {
   desenharLinha("maquinas");
   desenharLinha("anatomia");
   traduzirErrosDoFormulario();
+  desenharRepositorios();
 
   // lembra a escolha para a próxima visita
   try {
@@ -426,6 +431,56 @@ formulario.addEventListener("submit", async (evento) => {
 });
 
 
+// ---------- 7. PERGAMINHOS (API do GitHub) ----------
+const USUARIO_GITHUB = "Thz002";
+const listaRolos = document.getElementById("rolos");
+let repositorios = []; // guarda o que a API devolveu
+
+async function carregarRepositorios() {
+  try {
+    const resposta = await fetch(`https://api.github.com/users/${USUARIO_GITHUB}/repos?sort=updated&per_page=30`);
+    if (!resposta.ok) throw new Error("GitHub respondeu " + resposta.status);
+
+    const dados = await resposta.json(); // transforma o texto JSON em array do JavaScript
+    repositorios = dados.filter((repo) => !repo.fork).slice(0, 6); // tira os forks e fica com 6
+    desenharRepositorios();
+  } catch (erro) {
+    // se der erro, o card do AeroHub que já está no HTML continua na tela
+    console.log("Não consegui carregar os repositórios:", erro);
+  }
+}
+
+function criarRolo(repo) {
+  const rolo = criar("article", "rolo");
+
+  const data = new Date(repo.updated_at).toLocaleDateString(idioma === "en" ? "en-US" : "pt-BR");
+  let detalhes = frase("atualizado") + " " + data;
+  if (repo.language) detalhes = repo.language + " · " + detalhes;
+
+  const link = criar("a");
+  link.href = repo.html_url;
+  link.target = "_blank";
+  link.rel = "noopener";
+  const icone = criar("i", "fa-brands fa-github");
+  icone.setAttribute("aria-hidden", "true");
+  link.append(icone, " " + frase("abrirGithub"));
+
+  rolo.append(
+    criar("h3", null, repo.name),
+    criar("p", null, repo.description || frase("semDescricao")),
+    criar("p", "rolo__meta", detalhes),
+    link
+  );
+  return rolo;
+}
+
+function desenharRepositorios() {
+  if (repositorios.length === 0) return; // a API ainda não respondeu
+  listaRolos.innerHTML = "";
+  repositorios.forEach((repo) => listaRolos.append(criarRolo(repo)));
+}
+
+
 // ---------- INÍCIO ----------
 let idiomaSalvo = "pt";
 try {
@@ -434,3 +489,4 @@ try {
   // sem armazenamento: começa em português
 }
 trocarIdioma(idiomaSalvo);
+carregarRepositorios();
