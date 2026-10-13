@@ -220,7 +220,8 @@ img {
   font-style: italic;
 }
 
-.fr-desenho img {
+.fr-desenho img,
+.fr-desenho svg {
   display: block;
   width: 100%;
   max-width: 420px;
@@ -1019,7 +1020,8 @@ img {
     padding: 64px 0 36px;
   }
 
-  .fr-desenho img {
+  .fr-desenho img,
+  .fr-desenho svg {
     max-width: 340px;
   }
 

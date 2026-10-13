@@ -7,7 +7,7 @@ const menosMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 
 if (!menosMovimento) {
   // avisa o GSAP que vamos usar o plugin ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
 
   // 1. Capa: cada linha entra de baixo pra cima, uma depois da outra
   gsap.from(".fr-texto > *", {
@@ -16,8 +16,6 @@ if (!menosMovimento) {
     duration: 0.8,  // leva 0,8 segundo
     stagger: 0.12   // cada elemento começa 0,12s depois do anterior
   });
-
-  gsap.from(".fr-desenho", { opacity: 0, scale: 0.95, duration: 1.2, delay: 0.4 });
 
   // 2. Número do fólio + título de cada seção sobem quando chegam na tela
   document.querySelectorAll(".folio__num").forEach((numero) => {
@@ -75,5 +73,50 @@ if (!menosMovimento) {
     duration: 1.4,
     ease: "power2.out",
     scrollTrigger: { trigger: ".favorita", start: "top 80%" }
+  });
+
+  // 7. Título: cada letra entra separada (SplitText)
+  // espera as fontes carregarem, senão as letras são medidas com a fonte errada
+  document.fonts.ready.then(() => {
+    const titulo = SplitText.create(".fr-titulo__a, .fr-titulo__b", { type: "chars" });
+    gsap.from(titulo.chars, {
+      opacity: 0,
+      yPercent: 40,   // cada letra começa 40% da própria altura abaixo
+      rotate: -6,     // e um pouco torta
+      duration: 0.7,
+      stagger: 0.04,
+      ease: "power2.out"
+    });
+  });
+
+  // 8. Engrenagens desenhadas a tinta (DrawSVG)
+  gsap.from("#engrenagens .tinta > *", {
+    drawSVG: 0,       // começa com o traço vazio e vai até o desenho completo
+    duration: 1.5,
+    ease: "power1.inOut",
+    stagger: 0.04,
+    delay: 0.3
+  });
+
+  // 9. Engrenagens giram com o scroll, cada uma na velocidade certa
+  const rodas = [
+    { id: "#roda-a", giro: 120 },   // 24 dentes
+    { id: "#roda-b", giro: -180 },  // 16 dentes: gira 24/16 = 1,5x mais, no sentido contrário
+    { id: "#roda-c", giro: 288 }    // 10 dentes: gira 24/10 = 2,4x mais, no mesmo sentido da A
+  ];
+
+  rodas.forEach((roda) => {
+    const grupo = document.querySelector(roda.id);
+    gsap.to(grupo, {
+      rotation: roda.giro,
+      svgOrigin: grupo.dataset.centro, // gira em volta do eixo, que está no data-centro do SVG
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".frontispicio",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
   });
 }
