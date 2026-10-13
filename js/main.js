@@ -287,7 +287,7 @@ const projetos = {
         en: "A gamified web app that turns learning about health into a game for children and teenagers, built around the UN goal of Good Health and Well-being (SDG 3). The project brings Computer Science and Medicine students together in a system that helps young people grow into citizens who are more aware of their own health."
       },
       tecnologias: ["HTML5", "CSS3", "JavaScript", "Node.js", "Figma"],
-      repo: null,
+      repo: "https://github.com/Thz002/heroes-of-health",
       estado: "emAndamento",
       imagem: null
     }

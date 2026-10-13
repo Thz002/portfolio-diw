@@ -67,14 +67,16 @@ As animações respeitam a opção "reduzir movimento" do sistema. Com ela ligad
 ### Estrutura
 
 ```
-├── index.html          estrutura e textos em português
-├── css/style.css       visual do site
-├── js/main.js          idioma, projetos, cartas, formulário, repositórios e galeria
-├── js/animations.js    animações com GSAP
+├── index.html              estrutura e textos em português
+├── favicon.svg             ícone da aba (engrenagem)
+├── apple-touch-icon.png    ícone para iPhone e Safari
+├── css/style.css           visual do site
+├── js/main.js              idioma, projetos, cartas, formulário, repositórios e galeria
+├── js/animations.js        animações com GSAP
 └── assets/
-    ├── curiosidades/   imagens das cartas e rosa dos ventos
-    ├── desenhos/       desenhos da margem
-    └── pinturas/       imagem da obra favorita
+    ├── curiosidades/       imagens das cartas e rosa dos ventos
+    ├── desenhos/           desenhos da margem
+    └── pinturas/           imagem da obra favorita
 ```
 
 ### Onde mudar cada coisa
