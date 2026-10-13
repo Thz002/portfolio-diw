@@ -1,18 +1,10 @@
-/* =========================================================
-   Códice de Thiago - estilos
-   Ideia do layout: um caderno aberto. Texto na coluna da
-   esquerda e anotações (desenhos) na margem da direita.
-   No celular a margem desce para depois do texto.
-   ========================================================= */
-
-/* ---------- 1. Cores e fontes ---------- */
 :root {
-  --velino: #ead9b0;          /* papel */
+  --velino: #ead9b0;
   --velino-claro: #f4e8ca;
   --velino-escuro: #cdb37b;
-  --tinta: #2a1d12;           /* texto principal */
+  --tinta: #2a1d12;
   --tinta-suave: #5e4630;
-  --sanguinea: #a3432a;       /* vermelho de giz, para destaques */
+  --sanguinea: #a3432a;
   --sanguinea-clara: #c65d3e;
   --sanguinea-escura: #6b2414;
   --ouro: #a07a33;
@@ -25,7 +17,7 @@
   --f-texto: "EB Garamond", Palatino, Georgia, serif;
 
   --largura: 1120px;
-  --medida: 62ch;             /* largura boa para leitura */
+  --medida: 62ch;
 }
 
 * {
@@ -45,11 +37,9 @@ body {
   line-height: 1.62;
   color: var(--tinta);
   background-color: var(--velino);
-  /* textura de papel feita com um filtro de ruído em SVG */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011 0.017' numOctaves='4' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.28 0 0 0 0 0.1 0 0 0 0.2 0'/%3E%3C/filter%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23m)'/%3E%3Crect width='420' height='420' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
-/* bordas da tela mais escuras, como papel velho */
 body::before {
   content: "";
   position: fixed;
@@ -85,7 +75,6 @@ img {
   max-width: 100%;
 }
 
-/* ---------- 2. Botão de idioma ---------- */
 .idioma {
   position: fixed;
   top: 12px;
@@ -116,7 +105,6 @@ img {
   color: var(--velino-claro);
 }
 
-/* ---------- 3. Frontispício (capa) ---------- */
 .frontispicio {
   max-width: var(--largura);
   margin: 0 auto;
@@ -167,7 +155,6 @@ img {
   line-height: 1.5;
 }
 
-/* índice com pontinhos, como sumário de livro */
 .indice {
   max-width: 28rem;
 }
@@ -220,7 +207,6 @@ img {
   font-style: italic;
 }
 
-.fr-desenho img,
 .fr-desenho svg {
   display: block;
   width: 100%;
@@ -238,19 +224,27 @@ img {
   color: var(--tinta-suave);
 }
 
-/* ---------- 4. Fólios (as seções) ---------- */
+@media (pointer: fine) {
+  html {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E %3Cpath d='M30.5 1.5 C 21 3, 12.5 10, 8.6 21.6 L 10.4 23.4 C 20 18.5, 27.5 11, 30.5 1.5 Z' fill='%23f4e8ca' stroke='%232a1d12' stroke-width='1.1' stroke-linejoin='round'/%3E %3Cpath d='M29.6 2.4 L 8 24 M24.5 7.5 L 19.6 8.4 M21.6 10.4 L 16.4 11.8 M18.6 13.4 L 13.6 15.4 M25 8.6 L 25.6 12.8 M22 11.6 L 22.6 16 M19 14.6 L 19.4 18.6' fill='none' stroke='%232a1d12' stroke-width='0.8' stroke-linecap='round'/%3E %3Cpath d='M8.6 23.4 L 3 29' fill='none' stroke='%232a1d12' stroke-width='1.8' stroke-linecap='round'/%3E %3Cpath d='M1.5 30.5 L 3.6 26.2 L 5.8 28.4 Z' fill='%232a1d12'/%3E %3C/svg%3E") 2 30, auto;
+  }
+}
+
 .folio {
+  position: relative;
   max-width: var(--largura);
   margin: 0 auto;
   padding: 64px 0;
-  border-top: 1px solid var(--velino-escuro);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 30' width='260' height='30'%3E %3Cpath d='M0 15 H92 M168 15 H260' stroke='%23cdb37b' stroke-width='1' fill='none'/%3E %3Cg fill='none' stroke='%23a07a33' stroke-width='1.2' stroke-linecap='round'%3E %3Cpath d='M116 15 C 108 15, 106 7, 100 8 C 95 9, 95 15.5, 99.5 15.5 C 102.5 15.5, 103 11.5, 100.5 11'/%3E %3Cpath d='M116 15 C 108 15, 106 23, 100 22 C 95 21, 95 14.5, 99.5 14.5'/%3E %3Cpath d='M144 15 C 152 15, 154 7, 160 8 C 165 9, 165 15.5, 160.5 15.5 C 157.5 15.5, 157 11.5, 159.5 11'/%3E %3Cpath d='M144 15 C 152 15, 154 23, 160 22 C 165 21, 165 14.5, 160.5 14.5'/%3E %3Cpath d='M92 15 L88 12 L84 15 L88 18 Z M168 15 L172 12 L176 15 L172 18 Z'/%3E %3Cpath d='M138.4 15 L141 15.8 L140.6 17.9 L137.9 17.8 L136.8 19.9 L138.4 22.1 L136.9 23.6 L134.8 21.9 L132.6 23 L132.6 25.7 L130.6 26 L129.8 23.4 L127.4 23 L125.8 25.2 L124 24.2 L124.9 21.7 L123.2 19.9 L120.6 20.8 L119.7 18.9 L121.9 17.4 L121.6 15 L119 14.2 L119.4 12.1 L122.1 12.2 L123.2 10.1 L121.6 7.9 L123.1 6.4 L125.2 8.1 L127.4 7 L127.4 4.3 L129.4 4 L130.2 6.6 L132.6 7 L134.2 4.8 L136 5.8 L135.1 8.3 L136.8 10.1 L139.4 9.2 L140.3 11.1 L138.1 12.6 Z'/%3E %3Ccircle cx='130' cy='15' r='3'/%3E %3C/g%3E %3C/svg%3E") center top / 260px 30px no-repeat,
+    linear-gradient(var(--velino-escuro), var(--velino-escuro)) left 14.5px / calc(50% - 130px) 1px no-repeat,
+    linear-gradient(var(--velino-escuro), var(--velino-escuro)) right 14.5px / calc(50% - 130px) 1px no-repeat;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
   gap: 32px 64px;
   align-items: start;
 }
 
-/* seção sem margem de desenhos: uma coluna só */
 .folio--largo {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -276,7 +270,6 @@ img {
   color: var(--sanguinea);
 }
 
-/* :where() deixa essas regras "fracas", assim as classes específicas ganham delas */
 :where(.folio) h2 {
   margin-bottom: 1.2rem;
   font-family: var(--f-titulo);
@@ -295,7 +288,6 @@ img {
   margin-bottom: 1rem;
 }
 
-/* letra capitular vermelha no primeiro parágrafo */
 .capitular::first-letter {
   float: left;
   padding: 0.06em 0.1em 0 0;
@@ -305,7 +297,6 @@ img {
   color: var(--sanguinea);
 }
 
-/* ---------- 5. Sobre mim ---------- */
 .ficha {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -334,7 +325,6 @@ img {
   color: var(--ouro);
 }
 
-/* ---------- 6. Margem: desenhos e escrita espelhada ---------- */
 .margem {
   min-width: 0;
   display: grid;
@@ -371,7 +361,6 @@ img {
   color: var(--tinta);
 }
 
-/* scaleX(-1) espelha o texto; a classe muda pelo aria-pressed no JS */
 .espelho span {
   display: inline-block;
   transform: scaleX(-1);
@@ -397,7 +386,6 @@ img {
   color: var(--tinta-suave);
 }
 
-/* ---------- 7. Vivências (livro de registros) ---------- */
 .registro {
   list-style: none;
   margin-top: 1.8rem;
@@ -446,7 +434,6 @@ img {
   margin-bottom: 0;
 }
 
-/* ---------- 8. Meus Estudos (dois cadernos) ---------- */
 .folio--mega {
   display: block;
 }
@@ -475,7 +462,6 @@ img {
   line-height: 1.1;
 }
 
-/* linha do tempo: um traço vertical com uma bolinha por projeto */
 .linha {
   position: relative;
   margin-top: 1.8rem;
@@ -516,7 +502,6 @@ img {
   box-shadow: inset 0 0 0 3px var(--velino), inset 0 0 0 10px var(--tinta);
 }
 
-/* projetos em andamento ficam em vermelho */
 .marco--andamento::before {
   border-color: var(--sanguinea);
   box-shadow: inset 0 0 0 3px var(--velino), inset 0 0 0 10px var(--sanguinea);
@@ -571,7 +556,6 @@ img {
   color: var(--sanguinea);
 }
 
-/* imagem/GIF do projeto funcionando */
 .prancha {
   max-width: 30rem;
   margin: 0.8rem 0 0.9rem;
@@ -625,7 +609,6 @@ img {
   font-weight: 400;
 }
 
-/* ---------- 9. Pergaminhos (repositórios) ---------- */
 .rolos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
@@ -645,7 +628,6 @@ img {
   box-shadow: 0 2px 8px var(--sombra);
 }
 
-/* as duas varetas do pergaminho, em cima e embaixo */
 .rolo::before,
 .rolo::after {
   content: "";
@@ -680,7 +662,6 @@ img {
   color: var(--tinta-suave);
 }
 
-/* ---------- 10. Galeria ---------- */
 .temas {
   display: flex;
   flex-wrap: wrap;
@@ -715,7 +696,6 @@ img {
   gap: 2.2rem 1.8rem;
 }
 
-/* moldura dourada */
 .quadro__moldura {
   display: block;
   padding: 10px;
@@ -767,13 +747,11 @@ img {
   color: var(--tinta-suave);
 }
 
-/* ---------- 10b. Obra favorita ---------- */
 .favorita {
   max-width: 760px;
   margin: 2rem auto 0;
 }
 
-/* a mesma moldura dourada da galeria, só que mais grossa */
 .favorita__moldura {
   padding: 16px;
 }
@@ -784,7 +762,6 @@ img {
   height: auto;
 }
 
-/* legenda centralizada, como a plaquinha de um museu */
 .favorita__legenda {
   margin-top: 1.1rem;
   text-align: center;
@@ -813,7 +790,423 @@ img {
   line-height: 1.4;
 }
 
-/* ---------- 11. Correspondência (contato) ---------- */
+.cartas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: 2rem 1.6rem;
+  margin-top: 2rem;
+}
+
+.cartao {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  perspective: 1400px;
+}
+
+.cartao__miolo {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.3, 0.7, 0.25, 1);
+}
+
+.cartao[aria-pressed="true"] .cartao__miolo {
+  transform: rotateY(180deg);
+}
+
+.cartao__face {
+  grid-area: 1 / 1;
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.7rem 1.6rem 1.4rem;
+  background-color: var(--velino-claro);
+  border: 1px solid var(--velino-escuro);
+  box-shadow: 0 6px 14px var(--sombra);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.cartao__face::after,
+.rota::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 18px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48' height='48'%3E %3Cdefs%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ecd38e'/%3E%3Cstop offset='0.5' stop-color='%23b38a3c'/%3E%3Cstop offset='1' stop-color='%236b4f1d'/%3E%3C/linearGradient%3E%3C/defs%3E %3Cg fill='none' stroke='url(%23l)' stroke-width='3' stroke-linecap='round'%3E %3Cpath d='M3 17 V7 Q3 3 7 3 H17'/%3E%3Cpath d='M31 3 H41 Q45 3 45 7 V17'/%3E%3Cpath d='M45 31 V41 Q45 45 41 45 H31'/%3E%3Cpath d='M17 45 H7 Q3 45 3 41 V31'/%3E %3C/g%3E %3Cg fill='url(%23l)' stroke='%235f4518' stroke-width='0.6'%3E%3Ccircle cx='9' cy='9' r='2.4'/%3E%3Ccircle cx='39' cy='9' r='2.4'/%3E%3Ccircle cx='39' cy='39' r='2.4'/%3E%3Ccircle cx='9' cy='39' r='2.4'/%3E%3C/g%3E %3C/svg%3E") 20;
+  pointer-events: none;
+}
+
+.cartao__verso {
+  transform: rotateY(180deg);
+  background-image: linear-gradient(rgba(160, 122, 51, 0.09), rgba(160, 122, 51, 0.09));
+}
+
+@media (hover: hover) {
+  .cartao:hover .cartao__face {
+    box-shadow: 0 12px 24px var(--sombra);
+  }
+}
+
+.cartao__num {
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  color: var(--sanguinea);
+  text-align: center;
+}
+
+.cartao__figura {
+  display: block;
+  height: 160px;
+}
+
+.cartao__figura img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cartao__pergunta {
+  font-family: var(--f-mao);
+  font-size: 1.22rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.cartao__titulo {
+  font-family: var(--f-titulo);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cartao__resposta {
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.cartao__dica {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+.cartas--equacoes {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+}
+
+.cartao__sub {
+  margin-top: -0.4rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+.cartao__equacao {
+  display: block;
+  margin: auto 0;
+  padding: 1.1rem 0.2rem;
+  border-top: 1px solid rgba(160, 122, 51, 0.4);
+  border-bottom: 1px solid rgba(160, 122, 51, 0.4);
+  overflow: hidden;
+}
+
+.cartao__equacao .katex-display {
+  margin: 0;
+}
+
+.cartao__equacao .katex {
+  font-size: 1.12em;
+}
+
+.cartao__area {
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.cartao__area strong {
+  font-family: var(--f-titulo);
+  font-weight: 400;
+  color: var(--sanguinea);
+}
+
+.equacoes-bloco,
+.rota-bloco {
+  position: relative;
+  margin-top: 3.6rem;
+  padding-top: 2.6rem;
+  border-top: 1px dashed var(--velino-escuro);
+}
+
+.rota__rosa {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  width: 96px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.rota {
+  position: relative;
+  margin-top: 1.8rem;
+  padding: 3.2rem 2rem 2.2rem;
+  background-color: var(--velino-claro);
+  background-image:
+    linear-gradient(rgba(94, 70, 48, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 70, 48, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  border: 1px solid var(--velino-escuro);
+  box-shadow: inset 0 0 70px rgba(160, 122, 51, 0.22), 0 6px 14px var(--sombra);
+}
+
+.rota__paradas {
+  --progresso: 100%;
+  position: relative;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.rota__paradas::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: calc((100% - 4.8rem) / 8);
+  right: calc((100% - 4.8rem) / 8);
+  border-top: 2px dashed var(--sanguinea);
+  clip-path: inset(0 calc(100% - var(--progresso)) 0 0);
+}
+
+.rota__parada {
+  position: relative;
+  text-align: center;
+}
+
+.rota__marco {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 0.9rem;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  background-color: var(--velino-claro);
+}
+
+.rota__parada--aqui .rota__marco {
+  border-color: var(--sanguinea);
+  background-color: var(--sanguinea);
+  animation: pulsar 2.2s ease-out infinite;
+}
+
+@keyframes pulsar {
+  0% {
+    box-shadow: 0 0 0 0 rgba(163, 67, 42, 0.45);
+  }
+
+  70%,
+  100% {
+    box-shadow: 0 0 0 14px rgba(163, 67, 42, 0);
+  }
+}
+
+.rota__parada--destino .rota__marco {
+  border: none;
+  background: none;
+}
+
+.rota__parada--destino .rota__marco::before,
+.rota__parada--destino .rota__marco::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -2px;
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--sanguinea);
+  transform: rotate(45deg);
+}
+
+.rota__parada--destino .rota__marco::after {
+  transform: rotate(-45deg);
+}
+
+.rota__selo {
+  position: absolute;
+  top: -1.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 0.6rem;
+  border: 1px solid var(--sanguinea);
+  border-radius: 999px;
+  background-color: var(--velino-claro);
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--sanguinea);
+  white-space: nowrap;
+}
+
+.rota__parada h4 {
+  margin-bottom: 0.3rem;
+  font-family: var(--f-titulo);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.rota__parada p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--tinta-suave);
+}
+
+.manometro {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 25;
+  width: 76px;
+  filter: drop-shadow(0 4px 6px var(--sombra));
+  pointer-events: none;
+}
+
+.manometro svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.manometro__numeros {
+  font-family: var(--f-texto);
+  font-size: 9px;
+  fill: var(--tinta);
+  text-anchor: middle;
+}
+
+.manometro__unidade {
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 8px;
+  fill: var(--tinta-suave);
+  text-anchor: middle;
+}
+
+#vivencias::after,
+#curiosidades::after,
+#pergaminhos::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: no-repeat center / contain;
+  pointer-events: none;
+}
+
+#vivencias::after {
+  top: 90px;
+  right: 2%;
+  width: 190px;
+  height: 190px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E %3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='2' seed='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='5'/%3E%3C/filter%3E %3Cpath d='M177.9 120 C180.4 125.9 178.5 134.2 176.4 140.5 C174.3 146.8 169 151.7 165.1 157.9 C161.3 164 158.7 172 153.2 177.5 C147.8 183 140 189.4 132.5 190.8 C125 192.2 115.6 188.9 108.4 186 C101.2 183.1 94.6 178.2 89.2 173.4 C83.7 168.6 78 163.4 75.7 157.2 C73.3 151 74.4 142.6 75 136.4 C75.6 130.2 79.4 125.5 79.3 120 C79.2 114.5 75.1 109.6 74.4 103.4 C73.7 97.2 72.3 87.6 75.4 82.6 C78.5 77.5 86.9 74.4 93 73.3 C99.2 72.2 106.5 74.8 112.2 75.9 C117.9 77 122.8 77.7 127.1 79.8 C131.4 81.9 135 85.5 138.1 88.6 C141.3 91.7 142 95.6 145.8 98.3 C149.7 101.1 156 101.3 161.3 105 C166.7 108.6 175.4 114.1 177.9 120 Z M112.2 30.5 C112.1 31 112.1 31.4 112.1 31.9 C112 32.4 112.1 33 111.9 33.6 C111.7 34.1 111.4 34.6 110.9 35 C110.5 35.5 109.9 35.8 109.3 36.1 C108.7 36.3 107.9 36.6 107.3 36.5 C106.6 36.4 105.9 36.1 105.4 35.6 C104.9 35.2 104.6 34.5 104.3 33.9 C104 33.4 103.7 32.9 103.4 32.3 C103.1 31.8 102.7 31.2 102.6 30.5 C102.5 29.9 102.6 29.1 102.8 28.5 C103 27.9 103.5 27.4 104 26.9 C104.4 26.4 104.9 25.9 105.5 25.6 C106 25.2 106.7 25 107.4 25 C108 24.9 108.7 25.2 109.2 25.4 C109.8 25.6 110.3 25.9 110.8 26.2 C111.3 26.5 111.9 26.8 112.2 27.3 C112.5 27.7 112.7 28.4 112.7 29 C112.7 29.5 112.3 30.1 112.2 30.5 Z M57.2 42.7 C57.1 43.3 57.1 43.8 56.9 44.3 C56.7 44.8 56.4 45.2 56.1 45.6 C55.8 46 55.4 46.5 55 46.8 C54.6 47.1 54 47.5 53.5 47.6 C53 47.7 52.4 47.4 51.9 47.2 C51.4 46.9 51.1 46.4 50.7 46.1 C50.4 45.8 50 45.6 49.7 45.2 C49.4 44.9 49 44.6 48.8 44.1 C48.6 43.7 48.6 43.2 48.6 42.7 C48.6 42.3 48.7 41.8 48.8 41.3 C48.9 40.9 49 40.3 49.2 39.9 C49.5 39.4 49.9 39 50.3 38.6 C50.7 38.3 51.3 38.1 51.8 37.9 C52.4 37.7 53 37.4 53.6 37.4 C54.2 37.3 55.1 37.3 55.6 37.6 C56.1 38 56.6 38.7 56.8 39.2 C57.1 39.8 57 40.5 57.1 41.1 C57.2 41.7 57.2 42.2 57.2 42.7 Z M93.4 40 C93.5 41 93.7 42.2 93.4 43.2 C93.1 44.2 92.4 45.1 91.8 45.9 C91.1 46.7 90.2 47.3 89.3 48 C88.5 48.6 87.5 49.5 86.5 49.9 C85.4 50.2 84 50.4 83 50.1 C81.9 49.8 80.9 48.9 80 48.2 C79.1 47.6 78.4 46.9 77.5 46.1 C76.6 45.3 75.4 44.7 74.7 43.7 C74 42.6 73.4 41.3 73.3 40 C73.2 38.8 73.6 37.3 74.1 36.1 C74.6 35 75.3 33.7 76.2 32.9 C77.1 32 78.4 31.3 79.6 31.1 C80.8 30.9 82.2 31.5 83.3 31.7 C84.3 32 85.1 32.5 86 32.7 C86.9 32.9 87.9 32.7 88.8 33 C89.7 33.3 90.7 33.7 91.4 34.4 C92 35.1 92.4 36.2 92.7 37.1 C93.1 38 93.3 39 93.4 40 Z M91 32 C91 32.7 90.7 33.5 90.4 34.3 C90.2 35 89.9 35.7 89.6 36.5 C89.2 37.3 88.8 38.3 88.2 38.9 C87.5 39.5 86.5 40 85.6 40.2 C84.7 40.4 83.7 40.2 82.8 40 C81.9 39.8 80.9 39.4 80.2 38.9 C79.5 38.4 78.8 37.6 78.4 36.9 C78 36.1 78 35.1 77.9 34.3 C77.7 33.5 77.6 32.8 77.5 32 C77.4 31.2 77 30.3 77.1 29.4 C77.2 28.6 77.6 27.5 78.2 26.9 C78.7 26.3 79.8 26 80.6 25.8 C81.4 25.5 82.3 25.5 83 25.5 C83.8 25.5 84.6 25.6 85.3 25.9 C85.9 26.1 86.5 26.7 87 27.2 C87.5 27.6 87.9 28 88.4 28.5 C88.9 28.9 89.7 29.3 90.1 29.9 C90.5 30.4 90.9 31.3 91 32 Z M167.2 50.4 C167.2 50.9 167 51.5 166.7 51.9 C166.4 52.3 165.8 52.6 165.4 52.8 C165 53.1 164.6 53.1 164.2 53.3 C163.8 53.5 163.5 53.8 163.1 54 C162.7 54.2 162.2 54.4 161.8 54.3 C161.3 54.3 160.9 54 160.5 53.8 C160.2 53.5 159.8 53.1 159.6 52.8 C159.3 52.4 159.1 52.1 159 51.7 C158.9 51.3 158.9 50.8 159 50.4 C159.1 50 159.3 49.6 159.4 49.3 C159.5 48.9 159.5 48.4 159.7 48.1 C159.9 47.7 160.2 47.2 160.5 47 C160.9 46.7 161.4 46.7 161.8 46.6 C162.2 46.5 162.7 46.6 163.1 46.6 C163.6 46.5 164.2 46.4 164.7 46.6 C165.2 46.7 165.8 46.9 166.2 47.3 C166.5 47.6 166.8 48.2 167 48.7 C167.2 49.2 167.3 49.8 167.2 50.4 Z M37.8 85.2 C37.6 86.3 37.1 87.4 36.7 88.5 C36.3 89.5 36 90.7 35.4 91.7 C34.7 92.6 33.8 93.7 32.8 94.2 C31.8 94.7 30.5 94.8 29.4 94.9 C28.2 95 27.1 94.9 26 94.7 C24.9 94.5 23.7 94.3 22.7 93.7 C21.8 93.1 21 92.1 20.4 91.2 C19.8 90.3 19.5 89.3 19.1 88.3 C18.7 87.3 18 86.3 17.9 85.2 C17.8 84.1 17.9 82.7 18.4 81.8 C19 80.9 20.3 80.3 21.2 79.8 C22.2 79.3 23.2 79.3 24.1 79.1 C25 78.8 25.6 78.4 26.4 78.2 C27.2 78 28.1 77.9 28.9 77.9 C29.8 77.8 30.7 78 31.7 78.2 C32.7 78.4 33.9 78.5 34.9 79.1 C35.9 79.7 37.1 80.6 37.5 81.6 C38 82.6 37.9 84 37.8 85.2 Z M64 155.8 C63.9 157 63.5 158.2 63 159.3 C62.5 160.3 61.9 161.4 61.1 162.2 C60.3 163 59.2 163.5 58.2 164 C57.2 164.5 56.2 164.8 55.1 165.2 C54 165.6 52.8 166.3 51.6 166.3 C50.4 166.4 48.9 166.1 47.9 165.4 C46.9 164.8 46.3 163.4 45.7 162.3 C45.1 161.3 44.9 160.1 44.6 159 C44.3 157.9 43.9 156.8 44 155.8 C44.1 154.7 44.5 153.6 45.1 152.7 C45.6 151.9 46.5 151.2 47.3 150.6 C48 149.9 48.7 149.3 49.5 148.9 C50.3 148.5 51.2 148.1 52.1 148 C53 148 53.9 148.3 54.8 148.5 C55.7 148.6 56.4 148.7 57.5 148.8 C58.5 149 60 148.9 61 149.4 C62.1 150 63.2 151 63.7 152.1 C64.2 153.1 64.1 154.6 64 155.8 Z M204.5 79.1 C204.3 79.6 203.8 80.1 203.5 80.5 C203.1 80.9 202.8 81.2 202.4 81.5 C202.1 81.8 201.7 82 201.3 82.2 C201 82.4 200.5 82.4 200.1 82.4 C199.7 82.4 199.3 82.4 198.9 82.4 C198.5 82.4 198.1 82.4 197.7 82.3 C197.3 82.1 196.9 81.8 196.6 81.5 C196.4 81.2 196.3 80.7 196.1 80.3 C196 79.9 195.8 79.5 195.7 79.1 C195.6 78.6 195.4 78 195.4 77.6 C195.5 77.1 195.9 76.6 196.2 76.3 C196.5 75.9 197 75.7 197.5 75.5 C197.9 75.3 198.3 75.1 198.8 75 C199.3 74.9 199.8 74.9 200.3 74.9 C200.7 75 201.2 75.2 201.6 75.4 C202.1 75.6 202.6 75.8 203.1 76.1 C203.5 76.4 204.1 76.8 204.3 77.3 C204.6 77.8 204.6 78.5 204.5 79.1 Z M83.1 198.3 C83.1 199.2 83.3 200.2 83 201.1 C82.8 202 82.2 202.9 81.6 203.6 C81 204.3 80.1 204.8 79.3 205.3 C78.5 205.7 77.6 206.3 76.7 206.4 C75.8 206.6 74.7 206.6 73.9 206.2 C73.1 205.9 72.4 204.8 71.9 204.1 C71.5 203.4 71.4 202.5 71 201.9 C70.7 201.2 70.3 200.8 70 200.2 C69.7 199.6 69.3 199 69.1 198.3 C69 197.6 69.1 196.8 69.2 196.1 C69.3 195.3 69.4 194.4 69.8 193.7 C70.2 192.9 70.7 192 71.4 191.6 C72.1 191.2 73.2 191.1 74 191.1 C74.9 191.1 75.6 191.5 76.5 191.6 C77.3 191.7 78.2 191.7 79 191.9 C79.8 192.2 80.8 192.6 81.4 193.2 C82 193.8 82.4 194.8 82.6 195.6 C82.9 196.5 83 197.4 83.1 198.3 Z' fill='%232a1d12' filter='url(%23b)'/%3E %3C/svg%3E");
+  opacity: 0.1;
+  transform: rotate(18deg);
+}
+
+#curiosidades::after {
+  bottom: 30px;
+  left: -50px;
+  width: 150px;
+  height: 150px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E %3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='2' seed='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='5'/%3E%3C/filter%3E %3Cpath d='M177.9 120 C180.4 125.9 178.5 134.2 176.4 140.5 C174.3 146.8 169 151.7 165.1 157.9 C161.3 164 158.7 172 153.2 177.5 C147.8 183 140 189.4 132.5 190.8 C125 192.2 115.6 188.9 108.4 186 C101.2 183.1 94.6 178.2 89.2 173.4 C83.7 168.6 78 163.4 75.7 157.2 C73.3 151 74.4 142.6 75 136.4 C75.6 130.2 79.4 125.5 79.3 120 C79.2 114.5 75.1 109.6 74.4 103.4 C73.7 97.2 72.3 87.6 75.4 82.6 C78.5 77.5 86.9 74.4 93 73.3 C99.2 72.2 106.5 74.8 112.2 75.9 C117.9 77 122.8 77.7 127.1 79.8 C131.4 81.9 135 85.5 138.1 88.6 C141.3 91.7 142 95.6 145.8 98.3 C149.7 101.1 156 101.3 161.3 105 C166.7 108.6 175.4 114.1 177.9 120 Z M112.2 30.5 C112.1 31 112.1 31.4 112.1 31.9 C112 32.4 112.1 33 111.9 33.6 C111.7 34.1 111.4 34.6 110.9 35 C110.5 35.5 109.9 35.8 109.3 36.1 C108.7 36.3 107.9 36.6 107.3 36.5 C106.6 36.4 105.9 36.1 105.4 35.6 C104.9 35.2 104.6 34.5 104.3 33.9 C104 33.4 103.7 32.9 103.4 32.3 C103.1 31.8 102.7 31.2 102.6 30.5 C102.5 29.9 102.6 29.1 102.8 28.5 C103 27.9 103.5 27.4 104 26.9 C104.4 26.4 104.9 25.9 105.5 25.6 C106 25.2 106.7 25 107.4 25 C108 24.9 108.7 25.2 109.2 25.4 C109.8 25.6 110.3 25.9 110.8 26.2 C111.3 26.5 111.9 26.8 112.2 27.3 C112.5 27.7 112.7 28.4 112.7 29 C112.7 29.5 112.3 30.1 112.2 30.5 Z M57.2 42.7 C57.1 43.3 57.1 43.8 56.9 44.3 C56.7 44.8 56.4 45.2 56.1 45.6 C55.8 46 55.4 46.5 55 46.8 C54.6 47.1 54 47.5 53.5 47.6 C53 47.7 52.4 47.4 51.9 47.2 C51.4 46.9 51.1 46.4 50.7 46.1 C50.4 45.8 50 45.6 49.7 45.2 C49.4 44.9 49 44.6 48.8 44.1 C48.6 43.7 48.6 43.2 48.6 42.7 C48.6 42.3 48.7 41.8 48.8 41.3 C48.9 40.9 49 40.3 49.2 39.9 C49.5 39.4 49.9 39 50.3 38.6 C50.7 38.3 51.3 38.1 51.8 37.9 C52.4 37.7 53 37.4 53.6 37.4 C54.2 37.3 55.1 37.3 55.6 37.6 C56.1 38 56.6 38.7 56.8 39.2 C57.1 39.8 57 40.5 57.1 41.1 C57.2 41.7 57.2 42.2 57.2 42.7 Z M93.4 40 C93.5 41 93.7 42.2 93.4 43.2 C93.1 44.2 92.4 45.1 91.8 45.9 C91.1 46.7 90.2 47.3 89.3 48 C88.5 48.6 87.5 49.5 86.5 49.9 C85.4 50.2 84 50.4 83 50.1 C81.9 49.8 80.9 48.9 80 48.2 C79.1 47.6 78.4 46.9 77.5 46.1 C76.6 45.3 75.4 44.7 74.7 43.7 C74 42.6 73.4 41.3 73.3 40 C73.2 38.8 73.6 37.3 74.1 36.1 C74.6 35 75.3 33.7 76.2 32.9 C77.1 32 78.4 31.3 79.6 31.1 C80.8 30.9 82.2 31.5 83.3 31.7 C84.3 32 85.1 32.5 86 32.7 C86.9 32.9 87.9 32.7 88.8 33 C89.7 33.3 90.7 33.7 91.4 34.4 C92 35.1 92.4 36.2 92.7 37.1 C93.1 38 93.3 39 93.4 40 Z M91 32 C91 32.7 90.7 33.5 90.4 34.3 C90.2 35 89.9 35.7 89.6 36.5 C89.2 37.3 88.8 38.3 88.2 38.9 C87.5 39.5 86.5 40 85.6 40.2 C84.7 40.4 83.7 40.2 82.8 40 C81.9 39.8 80.9 39.4 80.2 38.9 C79.5 38.4 78.8 37.6 78.4 36.9 C78 36.1 78 35.1 77.9 34.3 C77.7 33.5 77.6 32.8 77.5 32 C77.4 31.2 77 30.3 77.1 29.4 C77.2 28.6 77.6 27.5 78.2 26.9 C78.7 26.3 79.8 26 80.6 25.8 C81.4 25.5 82.3 25.5 83 25.5 C83.8 25.5 84.6 25.6 85.3 25.9 C85.9 26.1 86.5 26.7 87 27.2 C87.5 27.6 87.9 28 88.4 28.5 C88.9 28.9 89.7 29.3 90.1 29.9 C90.5 30.4 90.9 31.3 91 32 Z M167.2 50.4 C167.2 50.9 167 51.5 166.7 51.9 C166.4 52.3 165.8 52.6 165.4 52.8 C165 53.1 164.6 53.1 164.2 53.3 C163.8 53.5 163.5 53.8 163.1 54 C162.7 54.2 162.2 54.4 161.8 54.3 C161.3 54.3 160.9 54 160.5 53.8 C160.2 53.5 159.8 53.1 159.6 52.8 C159.3 52.4 159.1 52.1 159 51.7 C158.9 51.3 158.9 50.8 159 50.4 C159.1 50 159.3 49.6 159.4 49.3 C159.5 48.9 159.5 48.4 159.7 48.1 C159.9 47.7 160.2 47.2 160.5 47 C160.9 46.7 161.4 46.7 161.8 46.6 C162.2 46.5 162.7 46.6 163.1 46.6 C163.6 46.5 164.2 46.4 164.7 46.6 C165.2 46.7 165.8 46.9 166.2 47.3 C166.5 47.6 166.8 48.2 167 48.7 C167.2 49.2 167.3 49.8 167.2 50.4 Z M37.8 85.2 C37.6 86.3 37.1 87.4 36.7 88.5 C36.3 89.5 36 90.7 35.4 91.7 C34.7 92.6 33.8 93.7 32.8 94.2 C31.8 94.7 30.5 94.8 29.4 94.9 C28.2 95 27.1 94.9 26 94.7 C24.9 94.5 23.7 94.3 22.7 93.7 C21.8 93.1 21 92.1 20.4 91.2 C19.8 90.3 19.5 89.3 19.1 88.3 C18.7 87.3 18 86.3 17.9 85.2 C17.8 84.1 17.9 82.7 18.4 81.8 C19 80.9 20.3 80.3 21.2 79.8 C22.2 79.3 23.2 79.3 24.1 79.1 C25 78.8 25.6 78.4 26.4 78.2 C27.2 78 28.1 77.9 28.9 77.9 C29.8 77.8 30.7 78 31.7 78.2 C32.7 78.4 33.9 78.5 34.9 79.1 C35.9 79.7 37.1 80.6 37.5 81.6 C38 82.6 37.9 84 37.8 85.2 Z M64 155.8 C63.9 157 63.5 158.2 63 159.3 C62.5 160.3 61.9 161.4 61.1 162.2 C60.3 163 59.2 163.5 58.2 164 C57.2 164.5 56.2 164.8 55.1 165.2 C54 165.6 52.8 166.3 51.6 166.3 C50.4 166.4 48.9 166.1 47.9 165.4 C46.9 164.8 46.3 163.4 45.7 162.3 C45.1 161.3 44.9 160.1 44.6 159 C44.3 157.9 43.9 156.8 44 155.8 C44.1 154.7 44.5 153.6 45.1 152.7 C45.6 151.9 46.5 151.2 47.3 150.6 C48 149.9 48.7 149.3 49.5 148.9 C50.3 148.5 51.2 148.1 52.1 148 C53 148 53.9 148.3 54.8 148.5 C55.7 148.6 56.4 148.7 57.5 148.8 C58.5 149 60 148.9 61 149.4 C62.1 150 63.2 151 63.7 152.1 C64.2 153.1 64.1 154.6 64 155.8 Z M204.5 79.1 C204.3 79.6 203.8 80.1 203.5 80.5 C203.1 80.9 202.8 81.2 202.4 81.5 C202.1 81.8 201.7 82 201.3 82.2 C201 82.4 200.5 82.4 200.1 82.4 C199.7 82.4 199.3 82.4 198.9 82.4 C198.5 82.4 198.1 82.4 197.7 82.3 C197.3 82.1 196.9 81.8 196.6 81.5 C196.4 81.2 196.3 80.7 196.1 80.3 C196 79.9 195.8 79.5 195.7 79.1 C195.6 78.6 195.4 78 195.4 77.6 C195.5 77.1 195.9 76.6 196.2 76.3 C196.5 75.9 197 75.7 197.5 75.5 C197.9 75.3 198.3 75.1 198.8 75 C199.3 74.9 199.8 74.9 200.3 74.9 C200.7 75 201.2 75.2 201.6 75.4 C202.1 75.6 202.6 75.8 203.1 76.1 C203.5 76.4 204.1 76.8 204.3 77.3 C204.6 77.8 204.6 78.5 204.5 79.1 Z M83.1 198.3 C83.1 199.2 83.3 200.2 83 201.1 C82.8 202 82.2 202.9 81.6 203.6 C81 204.3 80.1 204.8 79.3 205.3 C78.5 205.7 77.6 206.3 76.7 206.4 C75.8 206.6 74.7 206.6 73.9 206.2 C73.1 205.9 72.4 204.8 71.9 204.1 C71.5 203.4 71.4 202.5 71 201.9 C70.7 201.2 70.3 200.8 70 200.2 C69.7 199.6 69.3 199 69.1 198.3 C69 197.6 69.1 196.8 69.2 196.1 C69.3 195.3 69.4 194.4 69.8 193.7 C70.2 192.9 70.7 192 71.4 191.6 C72.1 191.2 73.2 191.1 74 191.1 C74.9 191.1 75.6 191.5 76.5 191.6 C77.3 191.7 78.2 191.7 79 191.9 C79.8 192.2 80.8 192.6 81.4 193.2 C82 193.8 82.4 194.8 82.6 195.6 C82.9 196.5 83 197.4 83.1 198.3 Z' fill='%232a1d12' filter='url(%23b)'/%3E %3C/svg%3E");
+  opacity: 0.08;
+  transform: rotate(-40deg) scaleX(-1);
+}
+
+#pergaminhos::after {
+  top: 70px;
+  right: 6%;
+  width: 70px;
+  height: 70px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='120' height='120'%3E %3Cpath d='M79.6 60 C78.3 62.3 76.2 63.6 75.2 65.5 C74.2 67.5 74.6 69.4 73.8 71.6 C73.1 73.7 72.3 76.7 70.7 78.5 C69 80.3 66.5 81.7 64 82.6 C61.5 83.6 58.5 84.4 55.7 84.4 C52.9 84.4 49.3 84.1 46.9 82.7 C44.5 81.2 42.6 78.3 41.1 75.8 C39.7 73.4 39.4 70.5 38.3 67.9 C37.3 65.2 35.5 62.9 34.8 60 C34.1 57.1 33.4 53.4 34.2 50.6 C35 47.7 37.5 45.1 39.6 42.9 C41.8 40.8 44.5 39.3 47.1 37.7 C49.7 36.1 52.4 34.1 55.3 33.3 C58.2 32.6 61.8 32.5 64.7 33.2 C67.7 33.9 70.5 35.8 73 37.5 C75.5 39.3 78 41.2 79.7 43.5 C81.3 45.9 82.9 48.9 82.9 51.7 C82.8 54.4 80.9 57.7 79.6 60 Z M100.6 43.2 C100.5 44 100.5 44.8 100.4 45.7 C100.2 46.5 100 47.5 99.5 48.2 C99.1 48.9 98.2 49.4 97.5 49.9 C96.7 50.4 95.9 50.9 95 51.2 C94.1 51.5 93 52.1 92.1 52 C91.1 51.9 90 51.4 89.3 50.7 C88.5 50.1 88.2 49 87.7 48.2 C87.2 47.4 86.7 46.7 86.1 45.9 C85.6 45.1 84.6 44.2 84.3 43.2 C84 42.2 83.9 40.9 84.1 39.8 C84.4 38.6 85 37.5 85.7 36.6 C86.4 35.6 87.3 34.6 88.3 34.1 C89.4 33.6 90.8 33.4 91.9 33.7 C93 33.9 94.1 34.8 95 35.4 C95.9 35.9 96.4 36.5 97.2 37 C97.9 37.5 98.8 37.7 99.4 38.3 C100 38.9 100.5 39.8 100.7 40.6 C100.9 41.4 100.6 42.4 100.6 43.2 Z M43.1 93.6 C42.9 94.4 42.2 95.1 41.7 95.7 C41.3 96.3 40.8 96.7 40.3 97.2 C39.9 97.8 39.6 98.4 39 98.9 C38.5 99.3 37.8 99.7 37.1 99.9 C36.4 100.1 35.6 100 34.9 99.8 C34.2 99.7 33.4 99.5 32.8 99.1 C32.2 98.7 31.7 98.1 31.4 97.4 C31.2 96.8 31.4 95.9 31.5 95.3 C31.5 94.6 31.7 94.2 31.7 93.6 C31.7 93 31.4 92.5 31.4 91.9 C31.4 91.4 31.6 90.7 31.9 90.2 C32.2 89.7 32.8 89.3 33.3 88.9 C33.8 88.6 34.4 88.2 35 87.9 C35.6 87.6 36.4 87.2 37.1 87.2 C37.9 87.2 38.7 87.5 39.3 87.8 C40 88.2 40.7 88.7 41.2 89.2 C41.8 89.7 42.6 90.4 42.9 91.1 C43.2 91.8 43.3 92.8 43.1 93.6 Z M90.6 88.8 C90.6 89.3 90.7 89.8 90.5 90.3 C90.4 90.8 90 91.2 89.7 91.6 C89.4 92 89 92.3 88.6 92.6 C88.2 92.8 87.6 93.1 87.1 93 C86.7 93 86.2 92.7 85.8 92.5 C85.4 92.2 85.1 91.9 84.7 91.7 C84.4 91.5 84 91.4 83.7 91.1 C83.3 90.8 83 90.5 82.9 90.1 C82.7 89.7 82.9 89.2 82.9 88.8 C82.9 88.4 83 88 83 87.6 C83.1 87.1 83 86.6 83.2 86.1 C83.4 85.7 83.7 85.2 84.1 84.8 C84.5 84.5 85 84.2 85.6 84 C86.1 83.8 86.7 83.6 87.3 83.6 C87.9 83.6 88.6 83.9 89 84.2 C89.4 84.6 89.7 85.4 89.8 85.9 C90 86.4 90 87 90.1 87.4 C90.2 87.9 90.5 88.3 90.6 88.8 Z' fill='%238e2f1c'/%3E %3Cellipse cx='54' cy='52.8' rx='9.6' ry='6' fill='%23c65d3e' opacity='0.55'/%3E %3C/svg%3E");
+  opacity: 0.85;
+}
+
+@media (max-width: 860px) {
+  .rota__rosa {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .rota {
+    padding: 1.8rem 1.3rem 1.6rem;
+  }
+
+  .rota__paradas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rota__paradas::before {
+    display: none;
+  }
+
+  .rota__parada:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: calc(-1.6rem - 12px);
+    left: 11px;
+    border-left: 2px dashed var(--sanguinea);
+    clip-path: inset(0 0 calc(100% - var(--progresso)) 0);
+  }
+
+  .rota__parada {
+    padding-left: 2.4rem;
+    text-align: left;
+  }
+
+  .rota__marco {
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    margin: 0;
+  }
+
+  .rota__selo {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    transform: none;
+  }
+
+  .manometro,
+  #vivencias::after,
+  #pergaminhos::after {
+    display: none;
+  }
+}
+
 .correspondencia {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -887,7 +1280,6 @@ img {
   color: var(--sanguinea);
 }
 
-/* lacre de cera */
 .lacre {
   position: absolute;
   right: -12px;
@@ -911,7 +1303,6 @@ img {
   transform: rotate(-14deg) scale(1.06);
 }
 
-/* formulário */
 .formulario {
   display: grid;
   gap: 1rem;
@@ -989,7 +1380,6 @@ img {
   font-style: italic;
 }
 
-/* ---------- 12. Rodapé ---------- */
 .colofao {
   max-width: var(--largura);
   margin: 0 auto;
@@ -1012,7 +1402,6 @@ img {
   color: var(--ouro);
 }
 
-/* ---------- 13. Telas menores ---------- */
 @media (max-width: 860px) {
   .frontispicio {
     grid-template-columns: minmax(0, 1fr);
@@ -1020,7 +1409,6 @@ img {
     padding: 64px 0 36px;
   }
 
-  .fr-desenho img,
   .fr-desenho svg {
     max-width: 340px;
   }
@@ -1082,7 +1470,6 @@ img {
   }
 }
 
-/* quem pediu menos animação no sistema não vê transições */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1091,20 +1478,27 @@ img {
   * {
     transition: none !important;
   }
+
+  .manometro {
+    display: none;
+  }
+
+  .rota__parada--aqui .rota__marco {
+    animation: none;
+  }
 }
 
-/* cada pintura é um link para a página da obra no museu */
 .quadro {
   display: block;
   color: inherit;
   text-decoration: none;
 }
 
-.quadro:hover {
+.
+quadro:hover {
   color: inherit;
 }
 
-/* mensagens de carregando / erro */
 .aviso {
   font-family: var(--f-mao);
   font-style: italic;

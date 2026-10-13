@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" width="360" height="230">
+<style>
+    .base > *, .tinta > *, .acento > * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .base > * { stroke: rgba(80, 64, 48, 0.26); stroke-width: 1.1; }
+    .tinta > * { stroke: #2a1d12; stroke-width: 1.4; }
+    .acento > * { stroke: #a3432a; stroke-width: 1.4; }
+    .construcao { fill: none; stroke: rgba(80, 64, 48, 0.26); stroke-width: 1; stroke-dasharray: 3 5; }
+    .tremor { filter: url(#tremor); }
+    .rotulo { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 13px; fill: #5e4630; }
+    .rotulo--acento { fill: #a3432a; }
+    .gota { fill: #a3432a; }
+</style>
+<filter id="tremor">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+</filter>
+  <line class="construcao" x1="40" y1="66" x2="268" y2="66"/>
+  <line class="construcao" x1="40" y1="78" x2="268" y2="78"/>
+  <line class="construcao" x1="40" y1="90" x2="268" y2="90"/>
+  <line class="construcao" x1="40" y1="102" x2="268" y2="102"/>
+  <line class="construcao" x1="40" y1="114" x2="268" y2="114"/>
+  <line class="construcao" x1="40" y1="126" x2="268" y2="126"/>
+  <line class="construcao" x1="40" y1="138" x2="268" y2="138"/>
+  <line class="construcao" x1="144" y1="18" x2="144" y2="176"/>
+  <line class="construcao" x1="156" y1="18" x2="156" y2="176"/>
+  <line class="construcao" x1="168" y1="18" x2="168" y2="176"/>
+  <line class="construcao" x1="180" y1="18" x2="180" y2="176"/>
+  <line class="construcao" x1="192" y1="18" x2="192" y2="176"/>
+  <line class="construcao" x1="204" y1="18" x2="204" y2="176"/>
+  <line class="construcao" x1="216" y1="18" x2="216" y2="176"/>
+  <g class="base tremor">
+    <ellipse cx="180" cy="102" rx="46" ry="36"/>
+    <circle cx="166" cy="96" r="12"/>
+    <circle cx="196" cy="110" r="8"/>
+    <path d="M30 60 V146"/>
+    <path d="M136 12 H228"/>
+    <path d="M284 56 V150"/>
+    <path d="M136 184 H228"/>
+    <path d="M290.2 56 L290.4 59 L290.7 62 L291.2 65 L292 68 L293.1 71 L294.9 74 L297.5 77 L301.6 80 L307.5 83 L314.8 86 L321.9 89 L326.9 92 L328.6 95 L327.4 98 L324.9 101 L322.3 104 L319.8 107 L317.2 110 L314.1 113 L310.6 116 L307 119 L303.5 122 L300.2 125 L297.5 128 L295.3 131 L293.5 134 L292.3 137 L291.4 140 L290.9 143 L290.5 146 L290.3 149"/>
+    <path d="M136 188.4 L139 188.6 L142 189 L145 189.5 L148 190.2 L151 191.1 L154 192.3 L157 193.7 L160 195.3 L163 197.1 L166 198.9 L169 200.6 L172 202.1 L175 203.3 L178 204 L181 204.5 L184 205 L187 205.9 L190 206.9 L193 207.6 L196 206.7 L199 204 L202 200 L205 196 L208 193 L211 191 L214 189.8 L217 189.1 L220 188.7 L223 188.4 L226 188.3"/>
+  </g>
+  <g class="tinta tremor">
+    <ellipse cx="180" cy="102" rx="46" ry="36"/>
+    <circle cx="166" cy="96" r="12"/>
+    <circle cx="196" cy="110" r="8"/>
+    <path d="M30 60 V146"/>
+    <path d="M136 12 H228"/>
+    <path d="M284 56 V150"/>
+    <path d="M136 184 H228"/>
+  </g>
+  <g class="acento tremor">
+    <path d="M290.2 56 L290.4 59 L290.7 62 L291.2 65 L292 68 L293.1 71 L294.9 74 L297.5 77 L301.6 80 L307.5 83 L314.8 86 L321.9 89 L326.9 92 L328.6 95 L327.4 98 L324.9 101 L322.3 104 L319.8 107 L317.2 110 L314.1 113 L310.6 116 L307 119 L303.5 122 L300.2 125 L297.5 128 L295.3 131 L293.5 134 L292.3 137 L291.4 140 L290.9 143 L290.5 146 L290.3 149"/>
+    <path d="M136 188.4 L139 188.6 L142 189 L145 189.5 L148 190.2 L151 191.1 L154 192.3 L157 193.7 L160 195.3 L163 197.1 L166 198.9 L169 200.6 L172 202.1 L175 203.3 L178 204 L181 204.5 L184 205 L187 205.9 L190 206.9 L193 207.6 L196 206.7 L199 204 L202 200 L205 196 L208 193 L211 191 L214 189.8 L217 189.1 L220 188.7 L223 188.4 L226 188.3"/>
+  </g>
+
+</svg>

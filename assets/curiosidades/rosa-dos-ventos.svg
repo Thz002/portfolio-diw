@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -12 120 142" width="120" height="142">
+<style>
+    .base > *, .tinta > *, .acento > * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .base > * { stroke: rgba(80, 64, 48, 0.26); stroke-width: 1.1; }
+    .tinta > * { stroke: #2a1d12; stroke-width: 1.4; }
+    .acento > * { stroke: #a3432a; stroke-width: 1.4; }
+    .construcao { fill: none; stroke: rgba(80, 64, 48, 0.26); stroke-width: 1; stroke-dasharray: 3 5; }
+    .tremor { filter: url(#tremor); }
+    .rotulo { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 13px; fill: #5e4630; }
+    .rotulo--acento { fill: #a3432a; }
+    .gota { fill: #a3432a; }
+</style>
+<filter id="tremor">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+</filter>
+
+  <g class="base tremor">
+    <circle cx="60" cy="60" r="38"/>
+    <circle cx="60" cy="60" r="42"/>
+    <path d="M53 60 L60 10 L67 60 Z"/>
+    <path d="M60 60 L60 10"/>
+    <path d="M55.1 55.1 L81.2 38.8 L64.9 64.9 Z"/>
+    <path d="M60 60 L81.2 38.8"/>
+    <path d="M60 53 L110 60 L60 67 Z"/>
+    <path d="M60 60 L110 60"/>
+    <path d="M64.9 55.1 L81.2 81.2 L55.1 64.9 Z"/>
+    <path d="M60 60 L81.2 81.2"/>
+    <path d="M67 60 L60 110 L53 60 Z"/>
+    <path d="M60 60 L60 110"/>
+    <path d="M64.9 64.9 L38.8 81.2 L55.1 55.1 Z"/>
+    <path d="M60 60 L38.8 81.2"/>
+    <path d="M60 67 L10 60 L60 53 Z"/>
+    <path d="M60 60 L10 60"/>
+    <path d="M55.1 64.9 L38.8 38.8 L64.9 55.1 Z"/>
+    <path d="M60 60 L38.8 38.8"/>
+  </g>
+  <g class="tinta tremor">
+    <circle cx="60" cy="60" r="38"/>
+    <circle cx="60" cy="60" r="42"/>
+    <path d="M53 60 L60 10 L67 60 Z"/>
+    <path d="M60 60 L60 10"/>
+    <path d="M55.1 55.1 L81.2 38.8 L64.9 64.9 Z"/>
+    <path d="M60 60 L81.2 38.8"/>
+    <path d="M60 53 L110 60 L60 67 Z"/>
+    <path d="M60 60 L110 60"/>
+    <path d="M64.9 55.1 L81.2 81.2 L55.1 64.9 Z"/>
+    <path d="M60 60 L81.2 81.2"/>
+    <path d="M67 60 L60 110 L53 60 Z"/>
+    <path d="M60 60 L60 110"/>
+    <path d="M64.9 64.9 L38.8 81.2 L55.1 55.1 Z"/>
+    <path d="M60 60 L38.8 81.2"/>
+    <path d="M60 67 L10 60 L60 53 Z"/>
+    <path d="M60 60 L10 60"/>
+    <path d="M55.1 64.9 L38.8 38.8 L64.9 55.1 Z"/>
+    <path d="M60 60 L38.8 38.8"/>
+  </g>
+  <path d="M60 10 L64 32 L60 28 L56 32 Z" fill="#a3432a" filter="url(#tremor)"/>
+  <text class="rotulo rotulo--acento" x="55" y="-1" style="font-style: normal; font-size: 14px">N</text>
+</svg>

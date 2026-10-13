@@ -7,30 +7,58 @@
   <meta name="description" content="Portfólio de Thiago, estudante de Ciência da Computação na PUC Minas.">
   <title>Códice de Thiago</title>
 
-  <!-- Fontes: IM Fell English (títulos e anotações) e EB Garamond (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animations.js" defer></script>
-</head> 
+</head>
 
 <body>
 
-  <!-- Botão de idioma, fixo no canto da tela -->
   <div class="idioma" role="group" aria-label="Idioma" data-i18n-aria="idiomaGrupo">
     <button type="button" data-idioma="pt" lang="pt-BR" aria-label="Português" aria-pressed="true">PT</button>
     <button type="button" data-idioma="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
   </div>
 
-  <!-- ========== FRONTISPÍCIO (capa + índice) ========== -->
+  <div class="manometro" aria-hidden="true">
+    <svg viewBox="0 0 120 120" width="120" height="120">
+      <defs>
+        <radialGradient id="latao" cx="35%" cy="30%" r="75%">
+          <stop offset="0" stop-color="#f3dc9a"/>
+          <stop offset="0.45" stop-color="#c9a24f"/>
+          <stop offset="1" stop-color="#6b4f1d"/>
+        </radialGradient>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="url(#latao)" stroke="#5f4518"/>
+      <circle cx="60" cy="60" r="49" fill="#5f4518"/>
+      <circle cx="60" cy="60" r="47" fill="#f4e8ca"/>
+      <path d="M101 60 A41 41 0 0 1 95.5 80.5" fill="none" stroke="#a3432a" stroke-width="5"/>
+      <path d="M21 82.5 L28 78.5 M16.5 71.6 L20.4 70.6 M15 60 L23 60 M16.5 48.4 L20.4 49.4 M21 37.5 L28 41.5 M28.2 28.2 L31 31 M37.5 21 L41.5 28 M48.4 16.5 L49.4 20.4 M60 15 L60 23 M71.6 16.5 L70.6 20.4 M82.5 21 L78.5 28 M91.8 28.2 L89 31 M99 37.5 L92 41.5 M103.5 48.4 L99.6 49.4 M105 60 L97 60 M103.5 71.6 L99.6 70.6 M99 82.5 L92 78.5" stroke="#2a1d12" stroke-width="1.2" stroke-linecap="round"/>
+      <g class="manometro__numeros">
+        <text x="34.9" y="77.5">0</text>
+        <text x="34.9" y="48.5">40</text>
+        <text x="60" y="34">80</text>
+        <text x="85.1" y="48.5">120</text>
+        <text x="85.1" y="77.5">160</text>
+      </g>
+      <text class="manometro__unidade" x="60" y="86">mmHg</text>
+      <path id="ponteiro" d="M60 19 L62.4 60 L60 70 L57.6 60 Z" fill="#a3432a" transform="rotate(-120 60 60)"/>
+      <circle cx="60" cy="60" r="5.5" fill="url(#latao)" stroke="#5f4518"/>
+      <ellipse cx="44" cy="36" rx="22" ry="11" fill="#fff" opacity="0.18" transform="rotate(-30 44 36)"/>
+    </svg>
+  </div>
+
+
   <header class="frontispicio" id="topo">
     <div class="fr-texto">
       <p class="fr-sobre" data-i18n="frSobre">Caderno de máquinas, estudos e invenções</p>
@@ -39,8 +67,7 @@
         <span class="fr-titulo__b" data-i18n="frTituloB">Perdido</span>
       </h1>
       <p class="fr-lugar">Belo Horizonte · Anno MMXXVI</p>
-      <p class="fr-lede" data-i18n="frLede">Estudante de Ciência da Computação na PUC Minas. Programo, monto circuitos
-        com Arduino e quero construir máquinas e sistemas para a área da saúde.</p>
+      <p class="fr-lede" data-i18n="frLede">O Códice de ideias de um futuro criador</p>
 
       <nav class="indice" aria-label="Índice" data-i18n-aria="indiceAria">
         <p class="indice__titulo" data-i18n="indiceTitulo">Índice</p>
@@ -59,19 +86,29 @@
                     class="indice__pontos"></span><span class="indice__fol">4v</span></a></li>
             </ol>
           </li>
+          <li>
+            <a href="#curiosidades"><span class="indice__nome" data-i18n="idxCuriosidades">Gabinete de Curiosidades</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 5</span></a>
+            <ol class="indice__sub">
+              <li><a href="#equacoes"><span class="indice__nome" data-i18n="idxEquacoes">Equações Favoritas</span><span
+                    class="indice__pontos"></span><span class="indice__fol">5r</span></a></li>
+              <li><a href="#rota"><span class="indice__nome" data-i18n="idxRota">A Rota do Inventor</span><span
+                    class="indice__pontos"></span><span class="indice__fol">5v</span></a></li>
+            </ol>
+          </li>
           <li><a href="#pergaminhos"><span class="indice__nome" data-i18n="idxPergaminhos">Pergaminhos</span><span
-                class="indice__pontos"></span><span class="indice__fol">fol. 5</span></a></li>
+                class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a></li>
           <li>
             <a href="#galeria"><span class="indice__nome" data-i18n="idxGaleria">Galeria</span><span
-                class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a>
+                class="indice__pontos"></span><span class="indice__fol">fol. 7</span></a>
             <ol class="indice__sub">
               <li><a href="#favorita"><span class="indice__nome" data-i18n="idxFavorita">Obra Favorita</span><span
-                    class="indice__pontos"></span><span class="indice__fol">6v</span></a></li>
+                    class="indice__pontos"></span><span class="indice__fol">7v</span></a></li>
             </ol>
           </li>
           <li><a href="#correspondencia"><span class="indice__nome"
                 data-i18n="idxCorrespondencia">Correspondência</span><span class="indice__pontos"></span><span
-                class="indice__fol">fol. 7</span></a></li>
+                class="indice__fol">fol. 8</span></a></li>
         </ol>
       </nav>
     </div>
@@ -165,18 +202,17 @@
 
   <main>
 
-    <!-- ========== SOBRE MIM ========== -->
     <section class="folio" id="inventor" aria-labelledby="t-inventor">
       <div class="folio__texto">
         <p class="folio__num">fol. 2r</p>
         <h2 id="t-inventor" data-i18n="invTitulo">O Inventor</h2>
         <p class="capitular" data-i18n="invP1">Meu nome é Thiago, tenho 18 anos e estou no segundo período de Ciência da
           Computação na PUC Minas.</p>
-        <p data-i18n="invP2">Meu objetivo profissional é me graduar em Computação e depois fazer mestrado em Engenharia
-          Biomédica, Física Médica ou Modelagem Computacional.</p>
-        <p data-i18n="invP3">Pratico natação pela AAAE PUC, a Atlética de Engenharia, faço musculação e gostaria de
-          começar no handebol. Gosto muito de desenhar e criar personagens novos, que é como alimento minha
-          criatividade, e no tempo livre escrevo histórias que eu mesmo crio.</p>
+        <p data-i18n="invP2">Meu objetivo profissional é me graduar em Computação, posteriormente realizar mestrado em Engenharia
+          Biomédica, Física Médica ou Modelagem Computacional. Me efetivar em um mercado onde vou unir as áreas as quais mais gosto</p>
+        <p data-i18n="invP3">Pratico natação pela AAAE PUC, a Atlética de Engenharia e Arquitetura, faço musculação e tenho experiência com
+          handebol. Gosto muito de desenhar e criar personagens novos, que é como alimento minha
+          criatividade, e no tempo livre escrevo histórias, crio mundos, e dou vida a eles.</p>
 
         <dl class="ficha">
           <dt data-i18n="fichaCurso">Curso</dt>
@@ -218,7 +254,6 @@
       </aside>
     </section>
 
-    <!-- ========== EXPERIÊNCIAS ========== -->
     <section class="folio folio--largo" id="vivencias" aria-labelledby="t-vivencias">
       <div class="folio__texto">
         <p class="folio__num">fol. 3r</p>
@@ -233,7 +268,7 @@
               <h3 data-i18n="viv1Atividade">Desenvolvimento web</h3>
               <p class="registro__instituicao" data-i18n="viv1Inst">PUC Minas e projetos pessoais</p>
               <p data-i18n="viv1Desc">Desenvolvimento de telas com HTML, CSS e JavaScript e integração com back-end para
-                deixar as páginas dinâmicas. Coloco isso em prática no SGP, no Heroes of Health e neste portfólio.</p>
+                deixar as páginas dinâmicas. Aprendizado ainda em consolidação, colocado em prática em alguns projetos em andamento.</p>
             </div>
           </li>
           <li class="registro__item">
@@ -258,16 +293,13 @@
       </div>
     </section>
 
-    <!-- ========== PROJETOS ========== -->
     <section class="folio folio--mega" id="estudos" aria-labelledby="t-estudos">
       <div class="folio__cab">
         <p class="folio__num">fol. 4</p>
         <h2 id="t-estudos" data-i18n="estTitulo">Meus Estudos</h2>
-        <p data-i18n="estIntro">Meus projetos, divididos em dois cadernos e organizados em linhas do tempo, do mais
-          antigo ao mais recente.</p>
+        <p data-i18n="estIntro">Algumas de minhas invenções, vindas da curiosidade e da criatividade.</p>
       </div>
 
-      <!-- Caderno I: Máquinas -->
       <div class="caderno" id="maquinas">
         <div class="folio__texto">
           <p class="folio__num">fol. 4r</p>
@@ -275,7 +307,6 @@
           <p data-i18n="maqIntro">Eletrônica e Arduino, feitos no Trabalho Interdisciplinar.</p>
           <div class="linha">
             <span class="linha__traco" aria-hidden="true"></span>
-            <!-- os projetos são criados pelo JavaScript a partir do array "projetos" (js/main.js) -->
             <ol id="linha-maquinas"></ol>
           </div>
         </div>
@@ -295,7 +326,7 @@
         </aside>
       </div>
 
-      <!-- Caderno II: Estudos Anatômicos -->
+
       <div class="caderno" id="anatomia">
         <div class="folio__texto">
           <p class="folio__num">fol. 4v</p>
@@ -305,7 +336,17 @@
             <span class="linha__traco" aria-hidden="true"></span>
             <ol id="linha-anatomia"></ol>
           </div>
+        </div>
 
+        <aside class="margem" aria-label="Anotações" data-i18n-aria="margemAria">
+          <div>
+            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho3">A mecânica estrutura,
+                o algoritmo dá vida.</span></button>
+            <span class="espelho__dica" data-i18n="dicaCurta">Toque para ler.</span>
+          </div>
+        </aside>
+
+        <div class="folio__texto">
           <h4 class="proximos__titulo" data-i18n="proxTitulo">Próximos estudos</h4>
           <ul class="planos">
             <li data-i18n="prox1"><strong>Vitrum.</strong> Simular o fluxo de sangue numa artéria e a onda de pressão
@@ -325,23 +366,342 @@
             <figcaption data-i18n="artLegenda">Estudo para o Vitrum, em sanguínea: a cada sístole uma onda de pressão
               percorre a artéria e dilata a parede.</figcaption>
           </figure>
-          <div>
-            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho3">A mecânica estrutura,
-                o algoritmo dá vida.</span></button>
-            <span class="espelho__dica" data-i18n="dicaCurta">Toque para ler.</span>
-          </div>
         </aside>
       </div>
     </section>
 
-    <!-- ========== REPOSITÓRIOS ========== -->
-    <section class="folio folio--largo" id="pergaminhos" aria-labelledby="t-pergaminhos">
+    <section class="folio folio--largo" id="curiosidades" aria-labelledby="t-curiosidades">
       <div class="folio__texto">
         <p class="folio__num">fol. 5r</p>
+        <h2 id="t-curiosidades" data-i18n="curTitulo">Gabinete de Curiosidades</h2>
+        <p class="folio__intro" data-i18n="curIntro">No Renascimento, os colecionadores guardavam ossos, instrumentos,
+          mapas e máquinas em armários de maravilhas. Este é o meu: histórias de onde a engenharia encontra a medicina.
+          Toque numa carta para virá-la.</p>
+
+        <div class="cartas">
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">I</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/leonardo-valvulas.jpg"
+                    alt="Estudos de Leonardo da Vinci das válvulas do coração, a tinta, com anotações em escrita espelhada"
+                    data-i18n-alt="c1Alt" width="560" height="440" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c1Pergunta">Como a válvula do coração sabe a hora de
+                  fechar?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">I</span>
+                <span class="cartao__titulo" data-i18n="c1Titulo">Leonardo e a válvula aórtica</span>
+                <span class="cartao__resposta" data-i18n="c1Resposta">Por volta de 1513, Leonardo da Vinci estudou
+                  corações de boi e desenhou os redemoinhos que o sangue forma logo depois da válvula aórtica. Esses
+                  vórtices empurram as cúspides de volta e ajudam a válvula a fechar. A ciência só confirmou a ideia em
+                  1968.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">II</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/poiseuille.svg"
+                    alt="Desenho a tinta de dois tubos, um com metade do raio do outro, com o perfil parabólico do fluxo"
+                    data-i18n-alt="c2Alt" width="360" height="210" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c2Pergunta">Se uma artéria fica com metade do raio, quanto
+                  sangue deixa de passar?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">II</span>
+                <span class="cartao__titulo" data-i18n="c2Titulo">A lei de Poiseuille</span>
+                <span class="cartao__resposta" data-i18n="c2Resposta">Num tubo, o fluxo depende do raio elevado à quarta
+                  potência. Com metade do raio, passa 16 vezes menos líquido, porque (½)⁴ = 1/16. Quem mediu isso, por
+                  volta de 1840, foi Jean Poiseuille, um médico francês que queria entender a circulação do
+                  sangue.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">III</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/pulso.svg"
+                    alt="Desenho de uma artéria com uma onda de pressão adiante e uma gota de sangue atrás"
+                    data-i18n-alt="c3Alt" width="360" height="210" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c3Pergunta">O que é mais rápido: o pulso ou o sangue?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">III</span>
+                <span class="cartao__titulo" data-i18n="c3Titulo">A onda que corre na frente</span>
+                <span class="cartao__resposta" data-i18n="c3Resposta">O pulso. A cada batida, uma onda de pressão
+                  percorre a aorta a cerca de 5 m/s, bem mais rápido que o próprio sangue. Com a idade, as artérias
+                  endurecem e a onda acelera, por isso os médicos medem essa velocidade. É a física por trás do
+                  Vitrum.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">IV</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/radon.svg"
+                    alt="Desenho de raios atravessando um objeto em dois ângulos e formando as suas sombras"
+                    data-i18n-alt="c4Alt" width="360" height="230" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c4Pergunta">A matemática da tomografia nasceu antes ou depois
+                  do tomógrafo?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">IV</span>
+                <span class="cartao__titulo" data-i18n="c4Titulo">Radon e Hounsfield</span>
+                <span class="cartao__resposta" data-i18n="c4Resposta">Muito antes. Em 1917, o matemático Johann Radon
+                  mostrou como reconstruir um objeto a partir das suas “sombras” vistas de vários ângulos. O primeiro
+                  exame num paciente só aconteceu em 1971, num aparelho criado pelo engenheiro Godfrey Hounsfield, que
+                  depois ganhou o Nobel de Medicina.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">V</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/marcapasso.svg"
+                    alt="Desenho a tinta de um marcapasso ligado a um traçado de eletrocardiograma"
+                    data-i18n-alt="c5Alt" width="360" height="210" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c5Pergunta">Quantos marcapassos uma pessoa pode usar na
+                  vida?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">V</span>
+                <span class="cartao__titulo" data-i18n="c5Titulo">O primeiro marcapasso implantado</span>
+                <span class="cartao__resposta" data-i18n="c5Resposta">Em 1958, em Estocolmo, o médico e engenheiro Rune
+                  Elmqvist construiu um marcapasso e o cirurgião Åke Senning o implantou em Arne Larsson. Arne viveu até
+                  2001 e, ao longo da vida, usou 26 aparelhos.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="cartao" aria-pressed="false">
+            <span class="cartao__miolo">
+              <span class="cartao__face cartao__frente">
+                <span class="cartao__num">VI</span>
+                <span class="cartao__figura"><img src="assets/curiosidades/laennec-estetoscopio.jpg"
+                    alt="Prancha de 1819 com os desenhos do estetoscópio de madeira de Laennec" data-i18n-alt="c6Alt"
+                    width="420" height="486" loading="lazy"></span>
+                <span class="cartao__pergunta" data-i18n="c6Pergunta">Como era o primeiro estetoscópio?</span>
+                <span class="cartao__dica" data-i18n="cartaDica">Toque para ver a resposta</span>
+              </span>
+              <span class="cartao__face cartao__verso">
+                <span class="cartao__num">VI</span>
+                <span class="cartao__titulo" data-i18n="c6Titulo">O caderno de Laennec</span>
+                <span class="cartao__resposta" data-i18n="c6Resposta">Um caderno enrolado. Em 1816, o médico René
+                  Laennec precisou ouvir o coração de uma paciente e enrolou um caderno em forma de tubo. O som chegou
+                  mais forte do que o esperado. Depois, Laennec construiu um cilindro de madeira e o batizou de
+                  estetoscópio.</span>
+                <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div class="equacoes-bloco" id="equacoes">
+          <h3 class="caderno__titulo" data-i18n="eqTitulo">Equações </h3>
+          <p class="folio__intro" data-i18n="eqIntro">As fequações que mais acho fascinante e interessante, e, onde a matemática, a física
+            e a computação viram ferramentas para a medicina. Toque numa equação para ver o que ela significa.</p>
+
+          <div class="cartas cartas--equacoes">
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq1Titulo">Transformada de Radon</span>
+                  <span class="cartao__sub" data-i18n="eq1Sub">A matemática da tomografia</span>
+                  <span class="cartao__equacao">\mathcal{R}f(\rho,\theta) = \iint f(x,y)\,\delta(x\cos\theta + y\sin\theta - \rho)\,dx\,dy</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq1Titulo">Transformada de Radon</span>
+                  <span class="cartao__area" data-i18n="eq1Med"><strong>Medicina.</strong> Cada “sombra” que o tomógrafo
+                    mede é uma integral do corpo ao longo de um raio. Invertendo a transformada, o exame reconstrói os
+                    cortes do paciente.</span>
+                  <span class="cartao__area" data-i18n="eq1Fis"><strong>Física.</strong> f(x, y) é a atenuação de cada
+                    ponto do tecido. A delta de Dirac escolhe só os pontos da reta que está a uma distância ρ do centro,
+                    no ângulo θ.</span>
+                  <span class="cartao__area" data-i18n="eq1Comp"><strong>Computação.</strong> Todas as projeções juntas
+                    formam o sinograma. Algoritmos como a retroprojeção filtrada e os métodos iterativos fazem a inversão
+                    e geram a imagem.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq2Titulo">Equação de Schrödinger</span>
+                  <span class="cartao__sub" data-i18n="eq2Sub">Como um sistema quântico muda com o tempo</span>
+                  <span class="cartao__equacao">i\hbar\,\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \hat{H}\,\Psi(\mathbf{r},t)</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq2Titulo">Equação de Schrödinger</span>
+                  <span class="cartao__area" data-i18n="eq2Med"><strong>Medicina.</strong> A ressonância magnética nasce da
+                    física quântica dos spins: os núcleos de hidrogênio do corpo absorvem e devolvem energia em
+                    frequências bem definidas.</span>
+                  <span class="cartao__area" data-i18n="eq2Fis"><strong>Física.</strong> Ψ é a função de onda, que guarda
+                    as probabilidades do sistema. O hamiltoniano Ĥ reúne a energia e dita como Ψ evolui.</span>
+                  <span class="cartao__area" data-i18n="eq2Comp"><strong>Computação.</strong> Resolvê-la numericamente é a
+                    base da química computacional, que simula moléculas para ajudar a desenhar novos medicamentos.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq3Titulo">Lei de Beer-Lambert</span>
+                  <span class="cartao__sub" data-i18n="eq3Sub">O raio X atravessando o corpo</span>
+                  <span class="cartao__equacao">I = I_0\, e^{-\int \mu(s)\,ds}</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq3Titulo">Lei de Beer-Lambert</span>
+                  <span class="cartao__area" data-i18n="eq3Med"><strong>Medicina.</strong> O osso absorve mais raio X que a
+                    gordura e o músculo. É esse contraste que aparece na radiografia e na tomografia.</span>
+                  <span class="cartao__area" data-i18n="eq3Fis"><strong>Física.</strong> A intensidade cai exponencialmente
+                    ao longo do caminho. μ(s) é o coeficiente de atenuação de cada tecido que o raio atravessa.</span>
+                  <span class="cartao__area" data-i18n="eq3Comp"><strong>Computação.</strong> Tirando o logaritmo,
+                    −ln(I/I₀) = ∫μ ds: cada medida vira exatamente a integral que a transformada de Radon usa.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq4Titulo">Transformada de Fourier</span>
+                  <span class="cartao__sub" data-i18n="eq4Sub">Um sinal visto como soma de frequências</span>
+                  <span class="cartao__equacao">F(\omega) = \int_{-\infty}^{\infty} f(t)\, e^{-i\omega t}\, dt</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq4Titulo">Transformada de Fourier</span>
+                  <span class="cartao__area" data-i18n="eq4Med"><strong>Medicina.</strong> A ressonância magnética mede os
+                    dados em frequências, e a imagem sai de uma transformada inversa. No ECG e no EEG, ela separa os
+                    ritmos do ruído.</span>
+                  <span class="cartao__area" data-i18n="eq4Fis"><strong>Física.</strong> Qualquer sinal pode ser escrito
+                    como soma de ondas. F(ω) diz quanto de cada frequência ω existe em f(t).</span>
+                  <span class="cartao__area" data-i18n="eq4Comp"><strong>Computação.</strong> O algoritmo FFT faz a conta em
+                    O(n log n) em vez de O(n²), e está em áudio, compressão de imagem e reconstrução tomográfica.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq5Titulo">Navier-Stokes</span>
+                  <span class="cartao__sub" data-i18n="eq5Sub">O escoamento do sangue de verdade</span>
+                  <span class="cartao__equacao">\begin{gathered} \rho\left(\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u}\cdot\nabla)\mathbf{u}\right) = \nabla\cdot\boldsymbol{\sigma} + \mathbf{f} \\ \boldsymbol{\sigma} = -p\,\mathbf{I} + 2\mu\,\mathbf{D}(\mathbf{u}) \end{gathered}</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq5Titulo">Navier-Stokes</span>
+                  <span class="cartao__area" data-i18n="eq5Med"><strong>Medicina.</strong> Descreve o sangue no coração, nas
+                    artérias e em aneurismas. Simulações ajudam a planejar cirurgias e stents e a medir o atrito do sangue
+                    na parede dos vasos.</span>
+                  <span class="cartao__area" data-i18n="eq5Fis"><strong>Física.</strong> É a segunda lei de Newton para um
+                    fluido: massa vezes aceleração, à esquerda, é igual às forças de pressão e de viscosidade (σ, com o
+                    sangue tratado como fluido newtoniano) mais as forças externas (f).</span>
+                  <span class="cartao__area" data-i18n="eq5Comp"><strong>Computação.</strong> Ninguém provou que ela sempre
+                    tem solução suave em 3D, um dos Problemas do Milênio. Na prática, é resolvida numericamente (CFD) em
+                    malhas com milhões de pontos.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+
+            <button type="button" class="cartao cartao--equacao" aria-pressed="false">
+              <span class="cartao__miolo">
+                <span class="cartao__face cartao__frente">
+                  <span class="cartao__titulo" data-i18n="eq6Titulo">Solução de Womersley</span>
+                  <span class="cartao__sub" data-i18n="eq6Sub">O escoamento pulsátil num tubo</span>
+                  <span class="cartao__equacao">u(r,t) = \operatorname{Re}\left\{ \frac{i P_0}{\rho\,\omega} \left[ 1 - \frac{J_0\!\left(\alpha\, i^{3/2}\, r/R\right)}{J_0\!\left(\alpha\, i^{3/2}\right)} \right] e^{i\omega t} \right\}</span>
+                  <span class="cartao__dica" data-i18n="eqDica">Toque para ver o significado</span>
+                </span>
+                <span class="cartao__face cartao__verso">
+                  <span class="cartao__titulo" data-i18n="eq6Titulo">Solução de Womersley</span>
+                  <span class="cartao__area" data-i18n="eq6Med"><strong>Medicina.</strong> Mostra como o perfil do sangue
+                    muda a cada batida: nas grandes artérias ele fica achatado e pode até inverter perto da parede. Na
+                    aorta, α passa de 10.</span>
+                  <span class="cartao__area" data-i18n="eq6Fis"><strong>Física.</strong> É a solução exata de Navier-Stokes
+                    para pressão oscilante num tubo rígido. J₀ é a função de Bessel de ordem zero, e α = R√(ωρ/μ) compara
+                    a inércia com a viscosidade.</span>
+                  <span class="cartao__area" data-i18n="eq6Comp"><strong>Computação.</strong> Serve para validar
+                    simuladores de CFD e como condição de entrada em modelos de artérias. É um dos pontos de partida do
+                    Vitrum.</span>
+                  <span class="cartao__dica" data-i18n="cartaVolta">Toque para voltar</span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="rota-bloco" id="rota">
+          <img class="rota__rosa" src="assets/curiosidades/rosa-dos-ventos.svg" alt="" width="120" height="142">
+          <p class="folio__num">fol. 5v</p>
+          <h3 class="caderno__titulo" data-i18n="rotaTitulo">A Rota do Inventor</h3>
+          <p class="folio__intro" data-i18n="rotaIntro">Todo inventor precisa de um mapa. Este é o caminho que quero
+            percorrer, da computação até as máquinas que cuidam de pessoas.</p>
+
+          <div class="rota">
+            <ol class="rota__paradas">
+              <li class="rota__parada rota__parada--aqui">
+                <span class="rota__marco" aria-hidden="true"></span>
+                <span class="rota__selo" data-i18n="rotaAqui">Você está aqui</span>
+                <h4 data-i18n="rota1Titulo">Ciência da Computação</h4>
+                <p data-i18n="rota1Texto">Graduação na PUC Minas, em Belo Horizonte.</p>
+              </li>
+              <li class="rota__parada">
+                <span class="rota__marco" aria-hidden="true"></span>
+                <h4 data-i18n="rota2Titulo">Primeiros estudos em saúde</h4>
+                <p data-i18n="rota2Texto">Primeiros projetos que trabalham física e algoritmos aplicados ao corpo.</p>
+              </li>
+              <li class="rota__parada">
+                <span class="rota__marco" aria-hidden="true"></span>
+                <h4 data-i18n="rota3Titulo">Mestrado</h4>
+                <p data-i18n="rota3Texto">Engenharia Biomédica, Física Médica ou Modelagem Computacional.</p>
+              </li>
+              <li class="rota__parada rota__parada--destino">
+                <span class="rota__marco" aria-hidden="true"></span>
+                <h4 data-i18n="rota4Titulo">Destino</h4>
+                <p data-i18n="rota4Texto">Projetar e programar máquinas para a saúde.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="folio folio--largo" id="pergaminhos" aria-labelledby="t-pergaminhos">
+      <div class="folio__texto">
+        <p class="folio__num">fol. 6r</p>
         <h2 id="t-pergaminhos" data-i18n="pergTitulo">Pergaminhos</h2>
         <p class="folio__intro" data-i18n="pergIntro">Meus repositórios públicos no GitHub.</p>
 
-        <!-- FERRAMENTA (próximo passo): a API do GitHub vai preencher esta lista sozinha -->
         <div class="rolos" id="rolos">
           <article class="rolo">
             <h3>AeroHub</h3>
@@ -354,14 +714,12 @@
       </div>
     </section>
 
-    <!-- ========== GALERIA ========== -->
     <section class="folio folio--largo" id="galeria" aria-labelledby="t-galeria">
       <div class="folio__texto">
-        <p class="folio__num">fol. 6r</p>
+        <p class="folio__num">fol. 7r</p>
         <h2 id="t-galeria" data-i18n="galTitulo">Galeria</h2>
         <p class="folio__intro" data-i18n="galIntro">Obras-primas em domínio público do Metropolitan Museum of Art, de
           Nova York. Escolha um pintor para ver as obras.</p>
-        <!-- nomes de pintores são iguais em português e inglês, então os botões não precisam de tradução -->
         <div class="temas" role="group" aria-label="Pintores" data-i18n-aria="temasAria">
           <button type="button" class="tema" data-tema="vangogh" aria-pressed="true">Van Gogh</button>
           <button type="button" class="tema" data-tema="rembrandt" aria-pressed="false">Rembrandt</button>
@@ -370,19 +728,16 @@
           <button type="button" class="tema" data-tema="goya" aria-pressed="false">Goya</button>
         </div>
 
-        <!-- FERRAMENTA (próximo passo): a API do museu vai colocar as pinturas aqui -->
         <div class="quadros" id="quadros"></div>
       </div>
     </section>
 
-    <!-- ========== OBRA FAVORITA ========== -->
     <section class="folio folio--largo" id="favorita" aria-labelledby="t-favorita">
       <div class="folio__texto">
-        <p class="folio__num">fol. 6v</p>
+        <p class="folio__num">fol. 7v</p>
         <h2 id="t-favorita" data-i18n="favTitulo">A Obra Favorita</h2>
         <p class="folio__intro" data-i18n="favIntro">O escritor deste códice possui uma obra a qual julga sua favorita.</p>
 
-        <!-- a imagem fica salva no projeto (domínio público, via Wikimedia Commons): não depende de API -->
         <figure class="favorita">
           <span class="quadro__moldura favorita__moldura">
             <img src="assets/pinturas/noite-estrelada.jpg"
@@ -400,10 +755,9 @@
       </div>
     </section>
 
-    <!-- ========== CONTATO ========== -->
     <section class="folio folio--largo" id="correspondencia" aria-labelledby="t-correspondencia">
       <div class="folio__texto">
-        <p class="folio__num">fol. 7r</p>
+        <p class="folio__num">fol. 8r</p>
         <h2 id="t-correspondencia" data-i18n="corTitulo">Correspondência</h2>
 
         <div class="correspondencia">

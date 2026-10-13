@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" width="360" height="210">
+<style>
+    .base > *, .tinta > *, .acento > * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .base > * { stroke: rgba(80, 64, 48, 0.26); stroke-width: 1.1; }
+    .tinta > * { stroke: #2a1d12; stroke-width: 1.4; }
+    .acento > * { stroke: #a3432a; stroke-width: 1.4; }
+    .construcao { fill: none; stroke: rgba(80, 64, 48, 0.26); stroke-width: 1; stroke-dasharray: 3 5; }
+    .tremor { filter: url(#tremor); }
+    .rotulo { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 13px; fill: #5e4630; }
+    .rotulo--acento { fill: #a3432a; }
+    .gota { fill: #a3432a; }
+</style>
+<filter id="tremor">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+</filter>
+  <line class="construcao" x1="40" y1="70" x2="330" y2="70"/>
+  <line class="construcao" x1="40" y1="160" x2="330" y2="160"/>
+  <g class="base tremor">
+    <path d="M50 34 H300 M50 106 H300"/>
+    <ellipse cx="50" cy="70" rx="12" ry="36"/>
+    <path d="M300 34 A12 36 0 0 1 300 106"/>
+    <path d="M50 142 H300 M50 178 H300"/>
+    <ellipse cx="50" cy="160" rx="6" ry="18"/>
+    <path d="M300 142 A6 18 0 0 1 300 178"/>
+    <path d="M80 70 V34 M76 38 L80 34 L84 38"/>
+    <path d="M80 160 V142 M76 146 L80 142 L84 146"/>
+    <path d="M160 34 V106"/>
+    <path d="M160 34 L175.3 37 L189.3 40 L202 43 L213.3 46 L223.3 49 L232 52 L239.3 55 L245.3 58 L250 61 L253.3 64 L255.3 67 L256 70 L255.3 73 L253.3 76 L250 79 L245.3 82 L239.3 85 L232 88 L223.3 91 L213.3 94 L202 97 L189.3 100 L175.3 103 L160 106"/>
+    <path d="M160 46.2 H214.2 M209.2 42.900000000000006 L214.2 46.2 L209.2 49.5"/>
+    <path d="M160 70 H256 M251 66.7 L256 70 L251 73.3"/>
+    <path d="M160 93.8 H214.2 M209.2 90.5 L214.2 93.8 L209.2 97.1"/>
+    <path d="M160 142 V178"/>
+    <path d="M160 142 L163.8 143.5 L167.3 145 L170.5 146.5 L173.3 148 L175.8 149.5 L178 151 L179.8 152.5 L181.3 154 L182.5 155.5 L183.3 157 L183.8 158.5 L184 160 L183.8 161.5 L183.3 163 L182.5 164.5 L181.3 166 L179.8 167.5 L178 169 L175.8 170.5 L173.3 172 L170.5 173.5 L167.3 175 L163.8 176.5 L160 178"/>
+    <path d="M160 148.1 H173.5 M168.5 144.79999999999998 L173.5 148.1 L168.5 151.4"/>
+    <path d="M160 160 H184 M179 156.7 L184 160 L179 163.3"/>
+    <path d="M160 171.9 H173.5 M168.5 168.6 L173.5 171.9 L168.5 175.20000000000002"/>
+  </g>
+  <g class="tinta tremor">
+    <path d="M50 34 H300 M50 106 H300"/>
+    <ellipse cx="50" cy="70" rx="12" ry="36"/>
+    <path d="M300 34 A12 36 0 0 1 300 106"/>
+    <path d="M50 142 H300 M50 178 H300"/>
+    <ellipse cx="50" cy="160" rx="6" ry="18"/>
+    <path d="M300 142 A6 18 0 0 1 300 178"/>
+    <path d="M80 70 V34 M76 38 L80 34 L84 38"/>
+    <path d="M80 160 V142 M76 146 L80 142 L84 146"/>
+  </g>
+  <g class="acento tremor">
+    <path d="M160 34 V106"/>
+    <path d="M160 34 L175.3 37 L189.3 40 L202 43 L213.3 46 L223.3 49 L232 52 L239.3 55 L245.3 58 L250 61 L253.3 64 L255.3 67 L256 70 L255.3 73 L253.3 76 L250 79 L245.3 82 L239.3 85 L232 88 L223.3 91 L213.3 94 L202 97 L189.3 100 L175.3 103 L160 106"/>
+    <path d="M160 46.2 H214.2 M209.2 42.900000000000006 L214.2 46.2 L209.2 49.5"/>
+    <path d="M160 70 H256 M251 66.7 L256 70 L251 73.3"/>
+    <path d="M160 93.8 H214.2 M209.2 90.5 L214.2 93.8 L209.2 97.1"/>
+    <path d="M160 142 V178"/>
+    <path d="M160 142 L163.8 143.5 L167.3 145 L170.5 146.5 L173.3 148 L175.8 149.5 L178 151 L179.8 152.5 L181.3 154 L182.5 155.5 L183.3 157 L183.8 158.5 L184 160 L183.8 161.5 L183.3 163 L182.5 164.5 L181.3 166 L179.8 167.5 L178 169 L175.8 170.5 L173.3 172 L170.5 173.5 L167.3 175 L163.8 176.5 L160 178"/>
+    <path d="M160 148.1 H173.5 M168.5 144.79999999999998 L173.5 148.1 L168.5 151.4"/>
+    <path d="M160 160 H184 M179 156.7 L184 160 L179 163.3"/>
+    <path d="M160 171.9 H173.5 M168.5 168.6 L173.5 171.9 L168.5 175.20000000000002"/>
+  </g>
+  <text class="rotulo" x="88" y="52">r</text>
+  <text class="rotulo" x="88" y="153">r/2</text>
+  <text class="rotulo rotulo--acento" x="314" y="75">Q</text>
+  <text class="rotulo rotulo--acento" x="314" y="165">Q/16</text>
+</svg>

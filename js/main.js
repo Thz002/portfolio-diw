@@ -1,28 +1,17 @@
-// =========================================================
-//  Códice de Thiago - main.js
-//  1. Textos em inglês
-//  2. Projetos (dados das linhas do tempo)
-//  3. Linha do tempo
-//  4. Troca de idioma (PT / EN)
-//  5. Escrita espelhada
-//  6. Formulário de contato (validação)
-// =========================================================
-
-
-// ---------- 1. TEXTOS EM INGLÊS ----------
-// O português fica direto no HTML. Cada elemento com data-i18n="chave"
-// troca pelo texto em inglês da mesma chave.
 const traducoes = {
   frSobre: "A notebook of machines, studies and inventions",
   frTituloA: "Codex",
   frTituloB: "of Thiago",
-  frLede: "Computer Science student at PUC Minas. I write code, build circuits with Arduino and want to create machines and systems for healthcare.",
+  frLede: "The codex of ideas of a future maker",
   indiceTitulo: "Contents",
   idxInventor: "The Inventor",
   idxVivencias: "Experience",
   idxEstudos: "My Studies",
   idxMaquinas: "Machines",
   idxAnatomia: "Anatomical Studies",
+  idxCuriosidades: "Cabinet of Curiosities",
+  idxEquacoes: "Favorite Equations",
+  idxRota: "The Inventor's Route",
   idxPergaminhos: "Scrolls",
   idxGaleria: "Gallery",
   idxFavorita: "Favorite Work",
@@ -78,6 +67,75 @@ const traducoes = {
   artLegenda: "A study for Vitrum, in red chalk: with each systole a pressure wave travels down the artery and stretches its wall.",
   espelho3: "Mechanics gives the structure; the algorithm brings it to life.",
 
+  curTitulo: "Cabinet of Curiosities",
+  curIntro: "In the Renaissance, collectors kept bones, instruments, maps and machines in cabinets of wonders. This one is mine: stories from where engineering meets medicine. Tap a card to turn it over.",
+  cartaDica: "Tap to see the answer",
+  cartaVolta: "Tap to turn back",
+  c1Pergunta: "How does the heart's valve know when to close?",
+  c1Titulo: "Leonardo and the aortic valve",
+  c1Resposta: "Around 1513, Leonardo da Vinci studied ox hearts and drew the swirls that blood forms just past the aortic valve. These vortices push the cusps back and help the valve close. Science only confirmed the idea in 1968.",
+  c2Pergunta: "If an artery's radius shrinks by half, how much less blood gets through?",
+  c2Titulo: "Poiseuille's law",
+  c2Resposta: "In a tube, flow depends on the radius to the fourth power. Halve the radius and 16 times less fluid gets through, because (½)⁴ = 1/16. Jean Poiseuille, a French physician who wanted to understand blood circulation, measured this around 1840.",
+  c3Pergunta: "Which is faster: the pulse or the blood?",
+  c3Titulo: "The wave that runs ahead",
+  c3Resposta: "The pulse. With every beat, a pressure wave travels down the aorta at about 5 m/s, much faster than the blood itself. As arteries stiffen with age, the wave speeds up, which is why doctors measure it. It's the physics behind Vitrum.",
+  c4Pergunta: "Did the math of CT scans come before or after the scanner?",
+  c4Titulo: "Radon and Hounsfield",
+  c4Resposta: "Long before. In 1917, the mathematician Johann Radon showed how to rebuild an object from its “shadows” seen from many angles. The first scan of a patient only happened in 1971, on a machine built by the engineer Godfrey Hounsfield, who later won the Nobel Prize in Medicine.",
+  c5Pergunta: "How many pacemakers can one person use in a lifetime?",
+  c5Titulo: "The first implanted pacemaker",
+  c5Resposta: "In 1958, in Stockholm, the physician and engineer Rune Elmqvist built a pacemaker, and the surgeon Åke Senning implanted it in Arne Larsson. Arne lived until 2001 and went through 26 devices.",
+  c6Pergunta: "What was the first stethoscope like?",
+  c6Titulo: "Laennec's notebook",
+  c6Resposta: "A rolled-up notebook. In 1816, the physician René Laennec needed to listen to a patient's heart and rolled a notebook into a tube. The sound came through louder than expected. Laennec later built a wooden cylinder and named it the stethoscope.",
+
+  rotaTitulo: "The Inventor's Route",
+  rotaIntro: "Every inventor needs a map. This is the road I want to travel, from computing to machines that care for people.",
+  rotaAqui: "You are here",
+  rota1Titulo: "Computer Science",
+  rota1Texto: "Undergraduate degree at PUC Minas, in Belo Horizonte.",
+  rota2Titulo: "First health studies",
+  rota2Texto: "Vitrum, Sentinela and Tomography: physics and algorithms applied to the body.",
+  rota3Titulo: "Master's degree",
+  rota3Texto: "Biomedical Engineering, Medical Physics or Computational Modeling.",
+  rota4Titulo: "Destination",
+  rota4Texto: "Designing and programming machines for healthcare.",
+
+  eqTitulo: "Favorite Equations",
+  eqIntro: "The formulas I love studying most, where math, physics and computing become tools for medicine. Tap an equation to see what it means.",
+  eqDica: "Tap to see what it means",
+  eq1Titulo: "Radon transform",
+  eq1Sub: "The math behind CT scans",
+  eq1Med: "<strong>Medicine.</strong> Every “shadow” a CT scanner measures is an integral of the body along one ray. Inverting the transform rebuilds the patient's cross-sections.",
+  eq1Fis: "<strong>Physics.</strong> f(x, y) is how much each point of tissue attenuates. The Dirac delta keeps only the points on the line at distance ρ from the center, at angle θ.",
+  eq1Comp: "<strong>Computing.</strong> All the projections together form the sinogram. Algorithms such as filtered back-projection and iterative methods invert it and produce the image.",
+  eq2Titulo: "Schrödinger equation",
+  eq2Sub: "How a quantum system changes over time",
+  eq2Med: "<strong>Medicine.</strong> MRI comes from the quantum physics of spin: the hydrogen nuclei in the body absorb and give back energy at well-defined frequencies.",
+  eq2Fis: "<strong>Physics.</strong> Ψ is the wave function, which holds the system's probabilities. The Hamiltonian Ĥ gathers the energy and dictates how Ψ evolves.",
+  eq2Comp: "<strong>Computing.</strong> Solving it numerically is the basis of computational chemistry, which simulates molecules to help design new drugs.",
+  eq3Titulo: "Beer–Lambert law",
+  eq3Sub: "X-rays passing through the body",
+  eq3Med: "<strong>Medicine.</strong> Bone absorbs more X-rays than fat and muscle. That contrast is what shows up on radiographs and CT scans.",
+  eq3Fis: "<strong>Physics.</strong> Intensity drops exponentially along the path. μ(s) is the attenuation coefficient of each tissue the ray crosses.",
+  eq3Comp: "<strong>Computing.</strong> Taking the logarithm gives −ln(I/I₀) = ∫μ ds: each measurement becomes exactly the integral the Radon transform uses.",
+  eq4Titulo: "Fourier transform",
+  eq4Sub: "A signal seen as a sum of frequencies",
+  eq4Med: "<strong>Medicine.</strong> MRI measures its data as frequencies, and the image comes from an inverse transform. In ECG and EEG, it separates rhythms from noise.",
+  eq4Fis: "<strong>Physics.</strong> Any signal can be written as a sum of waves. F(ω) tells how much of each frequency ω is present in f(t).",
+  eq4Comp: "<strong>Computing.</strong> The FFT algorithm does the math in O(n log n) instead of O(n²), and it powers audio, image compression and tomographic reconstruction.",
+  eq5Titulo: "Navier–Stokes",
+  eq5Sub: "How blood really flows",
+  eq5Med: "<strong>Medicine.</strong> It describes blood in the heart, the arteries and aneurysms. Simulations help plan surgeries and stents and measure the friction of blood on vessel walls.",
+  eq5Fis: "<strong>Physics.</strong> It is Newton's second law for a fluid: mass times acceleration, on the left, equals the pressure and viscous forces (σ, treating blood as a Newtonian fluid) plus external forces (f).",
+  eq5Comp: "<strong>Computing.</strong> No one has proved it always has a smooth solution in 3D, one of the Millennium Prize Problems. In practice it is solved numerically (CFD) on meshes with millions of points.",
+  eq6Titulo: "Womersley solution",
+  eq6Sub: "Pulsatile flow in a tube",
+  eq6Med: "<strong>Medicine.</strong> It shows how the blood profile changes with every beat: in large arteries it flattens and can even reverse near the wall. In the aorta, α is above 10.",
+  eq6Fis: "<strong>Physics.</strong> It is the exact Navier–Stokes solution for oscillating pressure in a rigid tube. J₀ is the zeroth-order Bessel function, and α = R√(ωρ/μ) weighs inertia against viscosity.",
+  eq6Comp: "<strong>Computing.</strong> It is used to validate CFD solvers and as the inlet condition in artery models. It is one of the starting points of Vitrum.",
+
   pergTitulo: "Scrolls",
   pergIntro: "My public repositories on GitHub.",
   aeroDesc: "A flight simulator built with Arduino, final project for the Interdisciplinary Project course.",
@@ -104,7 +162,6 @@ const traducoes = {
   colofao1: "Set in IM Fell English and EB Garamond. Icons by Font Awesome.",
   colofao2: 'Made by Thiago, Belo Horizonte, MMXXVI. <a href="#topo">Back to contents</a>',
 
-  // aria-label e alt (textos para leitores de tela)
   idiomaGrupo: "Language",
   indiceAria: "Contents",
   margemAria: "Notes",
@@ -114,10 +171,15 @@ const traducoes = {
   propAlt: "Human figure inscribed in a square and a circle",
   asaAlt: "Study of a jointed wing with ribs and a membrane",
   artAlt: "Study of an artery with the pressure wave and a cross-section",
-  favAlt: "A night sky of swirling blue, with yellow stars and moon, over a small village; on the left, a dark cypress rises into the sky"
+  favAlt: "A night sky of swirling blue, with yellow stars and moon, over a small village; on the left, a dark cypress rises into the sky",
+  c1Alt: "Leonardo da Vinci's ink studies of the heart valves, with notes in mirror writing",
+  c2Alt: "Ink drawing of two tubes, one with half the radius of the other, showing the parabolic flow profile",
+  c3Alt: "Drawing of an artery with a pressure wave ahead and a drop of blood behind",
+  c4Alt: "Drawing of rays crossing an object at two angles and casting its shadows",
+  c5Alt: "Ink drawing of a pacemaker connected to an ECG trace",
+  c6Alt: "1819 plate with drawings of Laennec's wooden stethoscope"
 };
 
-// Frases que o JavaScript escreve na tela (não estão no HTML)
 const frases = {
   pt: {
     repoGithub: "Repositório no GitHub",
@@ -166,9 +228,6 @@ function frase(chave) {
 }
 
 
-// ---------- 2. PROJETOS ----------
-// Cada projeto tem o texto nos dois idiomas.
-// repo: link do GitHub (ou null)  |  imagem: caminho do print/GIF (ou null)
 const projetos = {
   maquinas: [
     {
@@ -181,7 +240,7 @@ const projetos = {
       tecnologias: ["Arduino", "C++", "HC-SR04", "LDR"],
       repo: null,
       semRepo: true,
-      imagem: null // ex.: "assets/projetos/smart-city.png"
+      imagem: null
     },
     {
       titulo: { pt: "Desarmador de Bombas", en: "Bomb Defuser" },
@@ -193,7 +252,7 @@ const projetos = {
       tecnologias: ["Arduino", "C++", "TimerOne", "MultiFuncShield"],
       repo: null,
       semRepo: true,
-      imagem: null // ex.: "assets/projetos/desarmador.png"
+      imagem: null
     },
     {
       titulo: { pt: "Aero Hub", en: "Aero Hub" },
@@ -204,7 +263,7 @@ const projetos = {
       },
       tecnologias: ["Arduino", "C++", "Tinkercad"],
       repo: "https://github.com/Thz002/AeroHub",
-      imagem: null // ex.: "assets/projetos/aerohub.png"
+      imagem: null
     }
   ],
   anatomia: [
@@ -216,28 +275,26 @@ const projetos = {
         en: "A web system for a UBS, a Brazilian public primary-care clinic, to organize its patient records. It's my personal project for learning front end and back end with JavaScript."
       },
       tecnologias: ["HTML5", "CSS3", "JavaScript"],
-      repo: null, // coloque aqui o link do repositório
+      repo: null,
       estado: "emDesenvolvimento",
-      imagem: null // ex.: "assets/projetos/sgp.png"
+      imagem: null
     },
     {
       titulo: { pt: "Heroes of Health", en: "Heroes of Health" },
       data: { pt: "2º período · 2026", en: "2nd semester · 2026" },
       descricao: {
-        pt: "Aplicação web gamificada que ensina termos médicos a crianças, com o tema do ODS 3, Saúde e Bem-Estar. Tem um painel com turmas e foi prototipada no Figma. É o meu Trabalho Interdisciplinar 2 (MedComp).",
-        en: "A gamified web app that teaches medical terms to children, built around the UN goal of Good Health and Well-being (SDG 3). It has a dashboard with classes and was prototyped in Figma. It's my Interdisciplinary Project 2 (MedComp)."
+        pt: "Aplicação web gamificada que transforma o aprendizado sobre saúde em jogo para crianças e adolescentes, com o tema do ODS 3, Saúde e Bem-Estar. O projeto une alunos de Computação e de Medicina em um sistema que ajuda a formar jovens e cidadãos mais conscientes sobre a própria saúde.",
+        en: "A gamified web app that turns learning about health into a game for children and teenagers, built around the UN goal of Good Health and Well-being (SDG 3). The project brings Computer Science and Medicine students together in a system that helps young people grow into citizens who are more aware of their own health."
       },
       tecnologias: ["HTML5", "CSS3", "JavaScript", "Node.js", "Figma"],
-      repo: null, // coloque aqui o link do repositório
+      repo: null,
       estado: "emAndamento",
-      imagem: null // ex.: "assets/projetos/heroes-of-health.png"
+      imagem: null
     }
   ]
 };
 
 
-// ---------- 3. LINHA DO TEMPO ----------
-// Cria um elemento com classe e texto (textContent é seguro: não interpreta HTML)
 function criar(tag, classe, texto) {
   const elemento = document.createElement(tag);
   if (classe) elemento.className = classe;
@@ -284,7 +341,6 @@ function criarMarco(projeto) {
   return li;
 }
 
-// Apaga a lista e desenha de novo a partir do array (os dados mandam, a tela obedece)
 function desenharLinha(chave) {
   const lista = document.getElementById("linha-" + chave);
   lista.innerHTML = "";
@@ -292,13 +348,11 @@ function desenharLinha(chave) {
 }
 
 
-// ---------- 4. TROCA DE IDIOMA ----------
 const textos = document.querySelectorAll("[data-i18n]");
 const arias = document.querySelectorAll("[data-i18n-aria]");
 const alts = document.querySelectorAll("[data-i18n-alt]");
 const botoesIdioma = document.querySelectorAll(".idioma button");
 
-// guarda o português original de cada elemento antes de trocar
 textos.forEach((el) => { el.dataset.pt = el.innerHTML; });
 arias.forEach((el) => { el.dataset.ptAria = el.getAttribute("aria-label"); });
 alts.forEach((el) => { el.dataset.ptAlt = el.getAttribute("alt"); });
@@ -325,19 +379,15 @@ function trocarIdioma(novo) {
     botao.setAttribute("aria-pressed", botao.dataset.idioma === idioma ? "true" : "false");
   });
 
-  // partes que o JS desenha também precisam ser refeitas
-  desenharLinha("maquinas");  
+  desenharLinha("maquinas");
   desenharLinha("anatomia");
   traduzirErrosDoFormulario();
   desenharRepositorios();
   if (pinturas.length > 0) desenharGaleria();
 
-  // lembra a escolha para a próxima visita
   try {
     localStorage.setItem("idioma", idioma);
-  } catch (erro) {
-    // navegador sem armazenamento: tudo bem, só não lembra
-  }
+  } catch {}
 }
 
 botoesIdioma.forEach((botao) => {
@@ -345,9 +395,30 @@ botoesIdioma.forEach((botao) => {
 });
 
 
-// ---------- 5. ESCRITA ESPELHADA ----------
-// O CSS desvira o texto quando aria-pressed é "true"
-document.querySelectorAll(".espelho").forEach((botao) => {
+function encaixarEquacoes() {
+  document.querySelectorAll(".cartao__equacao").forEach((caixa) => {
+    const formula = caixa.querySelector(".katex");
+    if (!formula) return;
+    formula.style.fontSize = "";
+    const conteudo = document.createRange();
+    conteudo.selectNodeContents(formula.querySelector(".katex-html"));
+    const proporcao = caixa.clientWidth / conteudo.getBoundingClientRect().width;
+    if (proporcao < 1) {
+      formula.style.fontSize = parseFloat(getComputedStyle(formula).fontSize) * proporcao * 0.96 + "px";
+    }
+  });
+}
+
+if (window.katex) {
+  document.querySelectorAll(".cartao__equacao").forEach((equacao) => {
+    katex.render(equacao.textContent, equacao, { displayMode: true, throwOnError: false });
+  });
+  encaixarEquacoes();
+  document.fonts.ready.then(encaixarEquacoes);
+  window.addEventListener("resize", encaixarEquacoes);
+}
+
+document.querySelectorAll(".espelho, .cartao").forEach((botao) => {
   botao.addEventListener("click", () => {
     const lido = botao.getAttribute("aria-pressed") === "true";
     botao.setAttribute("aria-pressed", lido ? "false" : "true");
@@ -355,11 +426,9 @@ document.querySelectorAll(".espelho").forEach((botao) => {
 });
 
 
-// ---------- 6. FORMULÁRIO DE CONTATO ----------
 const formulario = document.getElementById("formulario");
 const statusFormulario = document.getElementById("status-formulario");
 
-// uma regra por campo: devolve true se o valor está ok
 const regras = {
   nome: (valor) => valor.trim().length >= 2,
   email: (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim()),
@@ -391,7 +460,6 @@ function validarFormulario() {
   return tudoCerto;
 }
 
-// quando troca o idioma, os erros que estão na tela também trocam
 function traduzirErrosDoFormulario() {
   for (const nomeDoCampo in regras) {
     const campo = document.getElementById(nomeDoCampo);
@@ -399,7 +467,6 @@ function traduzirErrosDoFormulario() {
   }
 }
 
-// enquanto a pessoa corrige um campo com erro, o erro some na hora
 for (const nomeDoCampo in regras) {
   document.getElementById(nomeDoCampo).addEventListener("input", () => {
     const campo = document.getElementById(nomeDoCampo);
@@ -407,11 +474,10 @@ for (const nomeDoCampo in regras) {
   });
 }
 
-// endereço do formulário no Formspree
 const ENDERECO_FORMSPREE = "https://formspree.io/f/xbgdzknr";
 
 formulario.addEventListener("submit", async (evento) => {
-  evento.preventDefault(); // não recarrega a página
+  evento.preventDefault();
   statusFormulario.textContent = "";
 
   if (!validarFormulario()) {
@@ -420,7 +486,7 @@ formulario.addEventListener("submit", async (evento) => {
   }
 
   const botao = formulario.querySelector("button[type='submit']");
-  botao.disabled = true; // evita clicar duas vezes e mandar duas mensagens
+  botao.disabled = true;
   statusFormulario.textContent = frase("formEnviando");
 
   try {
@@ -431,9 +497,9 @@ formulario.addEventListener("submit", async (evento) => {
     });
     if (!resposta.ok) throw new Error("Formspree respondeu " + resposta.status);
 
-    formulario.reset(); // limpa os campos
+    formulario.reset();
     statusFormulario.textContent = frase("formEnviado");
-  } catch (erro) {
+  } catch {
     statusFormulario.textContent = frase("formErro");
   } finally {
     botao.disabled = false;
@@ -441,21 +507,20 @@ formulario.addEventListener("submit", async (evento) => {
 });
 
 
-// ---------- 7. PERGAMINHOS (API do GitHub) ----------
 const USUARIO_GITHUB = "Thz002";
+const REPOS_ESCONDIDOS = ["Prova-1---Desenvolvimento-Interface-Web-2026-2", "my-soc-ops-pythons", "my-soc-ops-python"];
 const listaRolos = document.getElementById("rolos");
-let repositorios = []; // guarda o que a API devolveu
+let repositorios = [];
 
 async function carregarRepositorios() {
   try {
     const resposta = await fetch(`https://api.github.com/users/${USUARIO_GITHUB}/repos?sort=updated&per_page=30`);
     if (!resposta.ok) throw new Error("GitHub respondeu " + resposta.status);
 
-    const dados = await resposta.json(); // transforma o texto JSON em array do JavaScript
-    repositorios = dados.filter((repo) => !repo.fork).slice(0, 6); // tira os forks e fica com 6
+    const dados = await resposta.json();
+    repositorios = dados.filter((repo) => !repo.fork && !REPOS_ESCONDIDOS.includes(repo.name)).slice(0, 6);
     desenharRepositorios();
   } catch (erro) {
-    // se der erro, o card do AeroHub que já está no HTML continua na tela
     console.log("Não consegui carregar os repositórios:", erro);
   }
 }
@@ -485,16 +550,12 @@ function criarRolo(repo) {
 }
 
 function desenharRepositorios() {
-  if (repositorios.length === 0) return; // a API ainda não respondeu
+  if (repositorios.length === 0) return;
   listaRolos.innerHTML = "";
   repositorios.forEach((repo) => listaRolos.append(criarRolo(repo)));
-  if (window.ScrollTrigger) ScrollTrigger.refresh(); // recalcula as posições das animações
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
 }
 
-// ---------- 8. GALERIA (API do Metropolitan Museum of Art) ----------
-// A busca por texto da API do Met foi desativada, então as obras foram escolhidas a dedo:
-// cada pintor é uma lista com o número (objectID) de cada obra no museu.
-// Todas estão em domínio público e têm foto (o Met não libera as fotos do Monet).
 const colecoes = {
   vangogh: [436535, 436532, 436528, 436524, 437980, 436529],
   rembrandt: [437394, 437397, 437398, 437393, 437385, 437399],
@@ -505,8 +566,8 @@ const colecoes = {
 
 const galeria = document.getElementById("quadros");
 const botoesTema = document.querySelectorAll(".tema");
-let pinturas = [];     // obras que a API devolveu
-let pedidoAtual = 0;   // conta os pedidos, pra ignorar respostas de um tema antigo
+let pinturas = [];
+let pedidoAtual = 0;
 
 async function buscarObra(id) {
   const resposta = await fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + id);
@@ -519,19 +580,16 @@ async function carregarPinturas(tema) {
   galeria.innerHTML = `<p class="aviso">${frase("galCarregando")}</p>`;
 
   try {
-    // pede todas as obras do pintor ao mesmo tempo e espera todas responderem
     const respostas = await Promise.allSettled(colecoes[tema].map(buscarObra));
 
-    // se a pessoa clicou em outro pintor enquanto esperava, ignora esta resposta
     if (meuPedido !== pedidoAtual) return;
 
-    // fica só com as obras que chegaram e têm foto (se uma falhar, as outras aparecem)
     pinturas = respostas
       .filter((r) => r.status === "fulfilled" && r.value.primaryImageSmall)
       .map((r) => r.value);
     if (pinturas.length === 0) throw new Error("Nenhuma obra chegou");
     desenharGaleria();
-  } catch (erro) {
+  } catch {
     if (meuPedido !== pedidoAtual) return;
     galeria.innerHTML = `<p class="aviso">${frase("galErro")}</p>`;
   }
@@ -539,7 +597,7 @@ async function carregarPinturas(tema) {
 
 function criarQuadro(obra) {
   const quadro = criar("a", "quadro");
-  quadro.href = obra.objectURL; // abre a obra no site do museu
+  quadro.href = obra.objectURL;
   quadro.target = "_blank";
   quadro.rel = "noopener";
 
@@ -552,7 +610,6 @@ function criarQuadro(obra) {
   tela.append(img);
   moldura.append(tela);
 
-  // o autor vem como "Rembrandt (Rembrandt van Rijn)": ficamos só com o nome, antes do parêntese
   const artista = obra.artistDisplayName ? obra.artistDisplayName.split(" (")[0] : frase("artistaDesconhecido");
   const legenda = criar("span", "quadro__legenda");
   legenda.append(criar("strong", null, obra.title), criar("em", null, artista + ", " + obra.objectDate));
@@ -571,23 +628,18 @@ function desenharGaleria() {
   if (window.ScrollTrigger) ScrollTrigger.refresh();
 }
 
-// cada botão de tema busca pinturas novas
 botoesTema.forEach((botao) => {
   botao.addEventListener("click", () => {
     botoesTema.forEach((b) => b.setAttribute("aria-pressed", "false"));
     botao.setAttribute("aria-pressed", "true");
-    carregarPinturas(botao.dataset.tema); // "vangogh", "rembrandt"... vem do data-tema do HTML
+    carregarPinturas(botao.dataset.tema);
   });
 });
 
-
-// ---------- INÍCIO ----------
 let idiomaSalvo = "pt";
 try {
   idiomaSalvo = localStorage.getItem("idioma") || "pt";
-} catch (erro) {
-  // sem armazenamento: começa em português
-}
+} catch {}
 trocarIdioma(idiomaSalvo);
 carregarRepositorios();
 carregarPinturas("vangogh");
