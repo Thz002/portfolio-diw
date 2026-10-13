@@ -99,7 +99,7 @@ const traducoes = {
   formMensagem: "Message",
   formEnviar: "Send message",
 
-  colofao1: "Set in IM Fell English and EB Garamond.",
+  colofao1: "Set in IM Fell English and EB Garamond. Icons by Font Awesome.",
   colofao2: 'Made by Thiago, Belo Horizonte, MMXXVI. <a href="#topo">Back to contents</a>',
 
   // aria-label e alt (textos para leitores de tela)
@@ -248,7 +248,10 @@ function criarMarco(projeto) {
 
   const rodape = criar("p", "marco__rodape");
   if (projeto.repo) {
-    const link = criar("a", "marco__repo", frase("repoGithub"));
+    const link = criar("a", "marco__repo");
+    const icone = criar("i", "fa-brands fa-github");
+    icone.setAttribute("aria-hidden", "true");
+    link.append(icone, " " + frase("repoGithub"));
     link.href = projeto.repo;
     link.target = "_blank";
     link.rel = "noopener";

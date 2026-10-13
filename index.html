@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,13 @@
   <!-- Fontes: IM Fell English (títulos e anotações) e EB Garamond (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
-
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
+
 <body>
 
   <!-- Botão de idioma, fixo no canto da tela -->
@@ -31,30 +34,42 @@
         <span class="fr-titulo__b" data-i18n="frTituloB">de Thiago</span>
       </h1>
       <p class="fr-lugar">Belo Horizonte · Anno MMXXVI</p>
-      <p class="fr-lede" data-i18n="frLede">Estudante de Ciência da Computação na PUC Minas. Programo, monto circuitos com Arduino e quero construir máquinas e sistemas para a área da saúde.</p>
+      <p class="fr-lede" data-i18n="frLede">Estudante de Ciência da Computação na PUC Minas. Programo, monto circuitos
+        com Arduino e quero construir máquinas e sistemas para a área da saúde.</p>
 
       <nav class="indice" aria-label="Índice" data-i18n-aria="indiceAria">
         <p class="indice__titulo" data-i18n="indiceTitulo">Índice</p>
         <ol>
-          <li><a href="#inventor"><span class="indice__nome" data-i18n="idxInventor">O Inventor</span><span class="indice__pontos"></span><span class="indice__fol">fol. 2</span></a></li>
-          <li><a href="#vivencias"><span class="indice__nome" data-i18n="idxVivencias">Vivências</span><span class="indice__pontos"></span><span class="indice__fol">fol. 3</span></a></li>
+          <li><a href="#inventor"><span class="indice__nome" data-i18n="idxInventor">O Inventor</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 2</span></a></li>
+          <li><a href="#vivencias"><span class="indice__nome" data-i18n="idxVivencias">Vivências</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 3</span></a></li>
           <li>
-            <a href="#estudos"><span class="indice__nome" data-i18n="idxEstudos">Meus Estudos</span><span class="indice__pontos"></span><span class="indice__fol">fol. 4</span></a>
+            <a href="#estudos"><span class="indice__nome" data-i18n="idxEstudos">Meus Estudos</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 4</span></a>
             <ol class="indice__sub">
-              <li><a href="#maquinas"><span class="indice__nome" data-i18n="idxMaquinas">Máquinas</span><span class="indice__pontos"></span><span class="indice__fol">4r</span></a></li>
-              <li><a href="#anatomia"><span class="indice__nome" data-i18n="idxAnatomia">Estudos Anatômicos</span><span class="indice__pontos"></span><span class="indice__fol">4v</span></a></li>
+              <li><a href="#maquinas"><span class="indice__nome" data-i18n="idxMaquinas">Máquinas</span><span
+                    class="indice__pontos"></span><span class="indice__fol">4r</span></a></li>
+              <li><a href="#anatomia"><span class="indice__nome" data-i18n="idxAnatomia">Estudos Anatômicos</span><span
+                    class="indice__pontos"></span><span class="indice__fol">4v</span></a></li>
             </ol>
           </li>
-          <li><a href="#pergaminhos"><span class="indice__nome" data-i18n="idxPergaminhos">Pergaminhos</span><span class="indice__pontos"></span><span class="indice__fol">fol. 5</span></a></li>
-          <li><a href="#galeria"><span class="indice__nome" data-i18n="idxGaleria">Galeria</span><span class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a></li>
-          <li><a href="#correspondencia"><span class="indice__nome" data-i18n="idxCorrespondencia">Correspondência</span><span class="indice__pontos"></span><span class="indice__fol">fol. 7</span></a></li>
+          <li><a href="#pergaminhos"><span class="indice__nome" data-i18n="idxPergaminhos">Pergaminhos</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 5</span></a></li>
+          <li><a href="#galeria"><span class="indice__nome" data-i18n="idxGaleria">Galeria</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a></li>
+          <li><a href="#correspondencia"><span class="indice__nome"
+                data-i18n="idxCorrespondencia">Correspondência</span><span class="indice__pontos"></span><span
+                class="indice__fol">fol. 7</span></a></li>
         </ol>
       </nav>
     </div>
 
     <figure class="fr-desenho">
-      <img src="assets/desenhos/engrenagens.svg" alt="Desenho de três engrenagens encaixadas" data-i18n-alt="engAlt" width="336" height="360">
-      <figcaption data-i18n="engLegenda">Estudo de um trem de engrenagens com 24, 16 e 10 dentes. A roda do meio dá uma volta e meia a cada volta da maior.</figcaption>
+      <img src="assets/desenhos/engrenagens.svg" alt="Desenho de três engrenagens encaixadas" data-i18n-alt="engAlt"
+        width="336" height="360">
+      <figcaption data-i18n="engLegenda">Estudo de um trem de engrenagens com 24, 16 e 10 dentes. A roda do meio dá uma
+        volta e meia a cada volta da maior.</figcaption>
     </figure>
   </header>
 
@@ -65,15 +80,23 @@
       <div class="folio__texto">
         <p class="folio__num">fol. 2r</p>
         <h2 id="t-inventor" data-i18n="invTitulo">O Inventor</h2>
-        <p class="capitular" data-i18n="invP1">Meu nome é Thiago, tenho 18 anos e estou no segundo período de Ciência da Computação na PUC Minas.</p>
-        <p data-i18n="invP2">Meu objetivo profissional é me graduar em Computação e depois fazer mestrado em Engenharia Biomédica, Física Médica ou Modelagem Computacional.</p>
-        <p data-i18n="invP3">Pratico natação pela AAAE PUC, a Atlética de Engenharia, faço musculação e gostaria de começar no handebol. Gosto muito de desenhar e criar personagens novos, que é como alimento minha criatividade, e no tempo livre escrevo histórias que eu mesmo crio.</p>
+        <p class="capitular" data-i18n="invP1">Meu nome é Thiago, tenho 18 anos e estou no segundo período de Ciência da
+          Computação na PUC Minas.</p>
+        <p data-i18n="invP2">Meu objetivo profissional é me graduar em Computação e depois fazer mestrado em Engenharia
+          Biomédica, Física Médica ou Modelagem Computacional.</p>
+        <p data-i18n="invP3">Pratico natação pela AAAE PUC, a Atlética de Engenharia, faço musculação e gostaria de
+          começar no handebol. Gosto muito de desenhar e criar personagens novos, que é como alimento minha
+          criatividade, e no tempo livre escrevo histórias que eu mesmo crio.</p>
 
         <dl class="ficha">
-          <dt data-i18n="fichaCurso">Curso</dt><dd data-i18n="fichaCursoV">Ciência da Computação</dd>
-          <dt data-i18n="fichaPeriodo">Período</dt><dd data-i18n="fichaPeriodoV">2º</dd>
-          <dt data-i18n="fichaInst">Instituição</dt><dd>PUC Minas</dd>
-          <dt data-i18n="fichaCidade">Cidade</dt><dd>Belo Horizonte, MG</dd>
+          <dt data-i18n="fichaCurso">Curso</dt>
+          <dd data-i18n="fichaCursoV">Ciência da Computação</dd>
+          <dt data-i18n="fichaPeriodo">Período</dt>
+          <dd data-i18n="fichaPeriodoV">2º</dd>
+          <dt data-i18n="fichaInst">Instituição</dt>
+          <dd>PUC Minas</dd>
+          <dt data-i18n="fichaCidade">Cidade</dt>
+          <dd>Belo Horizonte, MG</dd>
         </dl>
 
         <h3 data-i18n="ferramentas">Ferramentas do ofício</h3>
@@ -91,12 +114,16 @@
 
       <aside class="margem" aria-label="Anotações" data-i18n-aria="margemAria">
         <figure class="estudo">
-          <img src="assets/desenhos/proporcoes.svg" alt="Figura humana inscrita num quadrado e num círculo" data-i18n-alt="propAlt" width="270" height="287" loading="lazy">
-          <figcaption data-i18n="propLegenda">Estudo de proporções, à maneira de Vitrúvio: quatro côvados fazem um passo, e vinte e quatro palmos fazem um homem.</figcaption>
+          <img src="assets/desenhos/proporcoes.svg" alt="Figura humana inscrita num quadrado e num círculo"
+            data-i18n-alt="propAlt" width="270" height="287" loading="lazy">
+          <figcaption data-i18n="propLegenda">Estudo de proporções, à maneira de Vitrúvio: quatro côvados fazem um
+            passo, e vinte e quatro palmos fazem um homem.</figcaption>
         </figure>
         <div>
-          <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho1">Criar coisas e dar vida a elas.</span></button>
-          <span class="espelho__dica" data-i18n="dicaLonga">Escrita espelhada, como nos cadernos de Leonardo. Toque para ler.</span>
+          <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho1">Criar coisas e dar vida
+              a elas.</span></button>
+          <span class="espelho__dica" data-i18n="dicaLonga">Escrita espelhada, como nos cadernos de Leonardo. Toque para
+            ler.</span>
         </div>
       </aside>
     </section>
@@ -106,7 +133,8 @@
       <div class="folio__texto">
         <p class="folio__num">fol. 3r</p>
         <h2 id="t-vivencias" data-i18n="vivTitulo">Vivências</h2>
-        <p class="folio__intro" data-i18n="vivIntro">O que venho aprendendo na prática, dentro e fora da sala de aula.</p>
+        <p class="folio__intro" data-i18n="vivIntro">O que venho aprendendo na prática, dentro e fora da sala de aula.
+        </p>
 
         <ul class="registro">
           <li class="registro__item">
@@ -114,7 +142,8 @@
             <div class="registro__corpo">
               <h3 data-i18n="viv1Atividade">Desenvolvimento web</h3>
               <p class="registro__instituicao" data-i18n="viv1Inst">PUC Minas e projetos pessoais</p>
-              <p data-i18n="viv1Desc">Desenvolvimento de telas com HTML, CSS e JavaScript e integração com back-end para deixar as páginas dinâmicas. Coloco isso em prática no SGP, no Heroes of Health e neste portfólio.</p>
+              <p data-i18n="viv1Desc">Desenvolvimento de telas com HTML, CSS e JavaScript e integração com back-end para
+                deixar as páginas dinâmicas. Coloco isso em prática no SGP, no Heroes of Health e neste portfólio.</p>
             </div>
           </li>
           <li class="registro__item">
@@ -122,7 +151,8 @@
             <div class="registro__corpo">
               <h3 data-i18n="viv2Atividade">Lógica de programação</h3>
               <p class="registro__instituicao" data-i18n="viv2Inst">PUC Minas · Algoritmos e Estruturas de Dados</p>
-              <p data-i18n="viv2Desc">Construindo lógica de programação com algoritmos e estruturas de dados em C e Java.</p>
+              <p data-i18n="viv2Desc">Construindo lógica de programação com algoritmos e estruturas de dados em C e
+                Java.</p>
             </div>
           </li>
           <li class="registro__item">
@@ -130,7 +160,8 @@
             <div class="registro__corpo">
               <h3 data-i18n="viv3Atividade">Prototipagem com Arduino</h3>
               <p class="registro__instituicao" data-i18n="viv3Inst">PUC Minas · Trabalho Interdisciplinar</p>
-              <p data-i18n="viv3Desc">Criação de protótipos interativos com Arduino, sensores e displays, do circuito no Tinkercad ao código em C++.</p>
+              <p data-i18n="viv3Desc">Criação de protótipos interativos com Arduino, sensores e displays, do circuito no
+                Tinkercad ao código em C++.</p>
             </div>
           </li>
         </ul>
@@ -142,7 +173,8 @@
       <div class="folio__cab">
         <p class="folio__num">fol. 4</p>
         <h2 id="t-estudos" data-i18n="estTitulo">Meus Estudos</h2>
-        <p data-i18n="estIntro">Meus projetos, divididos em dois cadernos e organizados em linhas do tempo, do mais antigo ao mais recente.</p>
+        <p data-i18n="estIntro">Meus projetos, divididos em dois cadernos e organizados em linhas do tempo, do mais
+          antigo ao mais recente.</p>
       </div>
 
       <!-- Caderno I: Máquinas -->
@@ -160,11 +192,14 @@
 
         <aside class="margem" aria-label="Anotações" data-i18n-aria="margemAria">
           <figure class="estudo">
-            <img src="assets/desenhos/asa.svg" alt="Estudo de uma asa articulada com costelas e membrana" data-i18n-alt="asaAlt" width="348" height="243" loading="lazy">
-            <figcaption data-i18n="asaLegenda">Estudo de asa para o Aero Hub. As costelas sustentam a membrana, como na asa de um morcego.</figcaption>
+            <img src="assets/desenhos/asa.svg" alt="Estudo de uma asa articulada com costelas e membrana"
+              data-i18n-alt="asaAlt" width="348" height="243" loading="lazy">
+            <figcaption data-i18n="asaLegenda">Estudo de asa para o Aero Hub. As costelas sustentam a membrana, como na
+              asa de um morcego.</figcaption>
           </figure>
           <div>
-            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho2">Toda máquina começa num rascunho.</span></button>
+            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho2">Toda máquina começa
+                num rascunho.</span></button>
             <span class="espelho__dica" data-i18n="dicaCurta">Toque para ler.</span>
           </div>
         </aside>
@@ -183,19 +218,26 @@
 
           <h4 class="proximos__titulo" data-i18n="proxTitulo">Próximos estudos</h4>
           <ul class="planos">
-            <li data-i18n="prox1"><strong>Vitrum.</strong> Simular o fluxo de sangue numa artéria e a onda de pressão gerada a cada batida do coração.</li>
-            <li data-i18n="prox2"><strong>Sentinela.</strong> Usar algoritmos e física para prever doenças ligadas ao sangue, à pressão e às veias.</li>
-            <li data-i18n="prox3"><strong>Tomografia.</strong> Reconstruir o interior de um objeto a partir da absorção de raio X em cada ângulo.</li>
+            <li data-i18n="prox1"><strong>Vitrum.</strong> Simular o fluxo de sangue numa artéria e a onda de pressão
+              gerada a cada batida do coração.</li>
+            <li data-i18n="prox2"><strong>Sentinela.</strong> Usar algoritmos e física para prever doenças ligadas ao
+              sangue, à pressão e às veias.</li>
+            <li data-i18n="prox3"><strong>Tomografia.</strong> Reconstruir o interior de um objeto a partir da absorção
+              de raio X em cada ângulo.</li>
           </ul>
         </div>
 
         <aside class="margem" aria-label="Anotações" data-i18n-aria="margemAria">
           <figure class="estudo">
-            <img src="assets/desenhos/arteria.svg" alt="Estudo de uma artéria com a onda de pressão e um corte transversal" data-i18n-alt="artAlt" width="360" height="200" loading="lazy">
-            <figcaption data-i18n="artLegenda">Estudo para o Vitrum, em sanguínea: a cada sístole uma onda de pressão percorre a artéria e dilata a parede.</figcaption>
+            <img src="assets/desenhos/arteria.svg"
+              alt="Estudo de uma artéria com a onda de pressão e um corte transversal" data-i18n-alt="artAlt"
+              width="360" height="200" loading="lazy">
+            <figcaption data-i18n="artLegenda">Estudo para o Vitrum, em sanguínea: a cada sístole uma onda de pressão
+              percorre a artéria e dilata a parede.</figcaption>
           </figure>
           <div>
-            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho3">A mecânica estrutura, o algoritmo dá vida.</span></button>
+            <button type="button" class="espelho" aria-pressed="false"><span data-i18n="espelho3">A mecânica estrutura,
+                o algoritmo dá vida.</span></button>
             <span class="espelho__dica" data-i18n="dicaCurta">Toque para ler.</span>
           </div>
         </aside>
@@ -215,7 +257,7 @@
             <h3>AeroHub</h3>
             <p data-i18n="aeroDesc">Simulador de voo com Arduino, projeto final de Trabalho Interdisciplinar.</p>
             <p class="rolo__meta">C++</p>
-            <a href="https://github.com/Thz002/AeroHub" target="_blank" rel="noopener" data-i18n="abrirGithub">Abrir no GitHub</a>
+            <a href="https://github.com/Thz002/AeroHub" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> <span data-i18n="abrirGithub">Abrir no GitHub</span></a>
           </article>
         </div>
       </div>
@@ -226,13 +268,19 @@
       <div class="folio__texto">
         <p class="folio__num">fol. 6r</p>
         <h2 id="t-galeria" data-i18n="galTitulo">Galeria</h2>
-        <p class="folio__intro" data-i18n="galIntro">Pinturas antigas em domínio público do Art Institute of Chicago. Escolha um tema para ver as obras.</p>
+        <p class="folio__intro" data-i18n="galIntro">Pinturas antigas em domínio público do Art Institute of Chicago.
+          Escolha um tema para ver as obras.</p>
         <div class="temas" role="group" aria-label="Tema das pinturas" data-i18n-aria="temasAria">
-          <button type="button" class="tema" data-tema="madonna" aria-pressed="true" data-i18n="temaMadonna">Madonas</button>
-          <button type="button" class="tema" data-tema="saint" aria-pressed="false" data-i18n="temaSaint">Santos</button>
-          <button type="button" class="tema" data-tema="annunciation" aria-pressed="false" data-i18n="temaAnnunciation">Anunciação</button>
-          <button type="button" class="tema" data-tema="portrait" aria-pressed="false" data-i18n="temaPortrait">Retratos</button>
-          <button type="button" class="tema" data-tema="landscape" aria-pressed="false" data-i18n="temaLandscape">Paisagens</button>
+          <button type="button" class="tema" data-tema="madonna" aria-pressed="true"
+            data-i18n="temaMadonna">Madonas</button>
+          <button type="button" class="tema" data-tema="saint" aria-pressed="false"
+            data-i18n="temaSaint">Santos</button>
+          <button type="button" class="tema" data-tema="annunciation" aria-pressed="false"
+            data-i18n="temaAnnunciation">Anunciação</button>
+          <button type="button" class="tema" data-tema="portrait" aria-pressed="false"
+            data-i18n="temaPortrait">Retratos</button>
+          <button type="button" class="tema" data-tema="landscape" aria-pressed="false"
+            data-i18n="temaLandscape">Paisagens</button>
         </div>
 
         <!-- FERRAMENTA (próximo passo): a API do museu vai colocar as pinturas aqui -->
@@ -249,11 +297,11 @@
         <div class="correspondencia">
           <div class="carta">
             <p data-i18n="corSaudacao">Caro leitor,</p>
-            <p data-i18n="corTexto">obrigado por folhear este caderno. Para ver meus projetos ou falar comigo, me encontre no GitHub ou me mande uma mensagem.</p>
+            <p data-i18n="corTexto">obrigado por folhear este caderno. Para ver meus projetos ou falar comigo, me
+              encontre no GitHub ou me mande uma mensagem.</p>
 
             <a class="contato-github" href="https://github.com/Thz002" target="_blank" rel="noopener">
-              <!-- FERRAMENTA (próximo passo): o ícone do GitHub vem do Font Awesome -->
-              <span class="contato-github__icone" aria-hidden="true"></span>
+              <span class="contato-github__icone" aria-hidden="true"><i class="fa-brands fa-github"></i></span>
               <span class="contato-github__texto">
                 <span class="contato-github__rotulo">GitHub</span>
                 <span class="contato-github__url">github.com/Thz002</span>
@@ -262,7 +310,8 @@
 
             <p>Belo Horizonte, MMXXVI.</p>
             <p class="carta__assinatura">Thiago</p>
-            <a class="lacre" href="https://github.com/Thz002" target="_blank" rel="noopener" aria-label="Abrir meu GitHub" data-i18n-aria="lacreAria">T</a>
+            <a class="lacre" href="https://github.com/Thz002" target="_blank" rel="noopener"
+              aria-label="Abrir meu GitHub" data-i18n-aria="lacreAria">T</a>
           </div>
 
           <form class="formulario" id="formulario" novalidate>
@@ -297,9 +346,10 @@
 
   <footer class="colofao">
     <p class="colofao__ornamento" aria-hidden="true">❦</p>
-    <p data-i18n="colofao1">Composto em IM Fell English e EB Garamond.</p>
+    <p data-i18n="colofao1">Composto em IM Fell English e EB Garamond. Ícones do Font Awesome.</p>
     <p data-i18n="colofao2">Feito por Thiago, Belo Horizonte, MMXXVI. <a href="#topo">Voltar ao índice</a></p>
   </footer>
 
 </body>
+
 </html>
