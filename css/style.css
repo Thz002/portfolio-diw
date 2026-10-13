@@ -766,6 +766,52 @@ img {
   color: var(--tinta-suave);
 }
 
+/* ---------- 10b. Obra favorita ---------- */
+.favorita {
+  max-width: 760px;
+  margin: 2rem auto 0;
+}
+
+/* a mesma moldura dourada da galeria, só que mais grossa */
+.favorita__moldura {
+  padding: 16px;
+}
+
+.favorita__moldura img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* legenda centralizada, como a plaquinha de um museu */
+.favorita__legenda {
+  margin-top: 1.1rem;
+  text-align: center;
+}
+
+.favorita__legenda strong {
+  display: block;
+  font-family: var(--f-titulo);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.favorita__legenda em,
+.favorita__legenda span {
+  display: block;
+  color: var(--tinta-suave);
+}
+
+.favorita__legenda .favorita__nota {
+  max-width: 52ch;
+  margin: 0.6rem auto 0;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
 /* ---------- 11. Correspondência (contato) ---------- */
 .correspondencia {
   display: grid;
@@ -1043,4 +1089,22 @@ img {
   * {
     transition: none !important;
   }
+}
+
+/* cada pintura é um link para a página da obra no museu */
+.quadro {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.quadro:hover {
+  color: inherit;
+}
+
+/* mensagens de carregando / erro */
+.aviso {
+  font-family: var(--f-mao);
+  font-style: italic;
+  color: var(--tinta-suave);
 }

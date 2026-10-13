@@ -14,8 +14,13 @@
     href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js" defer></script>
   <script src="js/main.js" defer></script>
-</head>
+  <script src="js/animations.js" defer></script>
+</head> 
 
 <body>
 
@@ -56,8 +61,14 @@
           </li>
           <li><a href="#pergaminhos"><span class="indice__nome" data-i18n="idxPergaminhos">Pergaminhos</span><span
                 class="indice__pontos"></span><span class="indice__fol">fol. 5</span></a></li>
-          <li><a href="#galeria"><span class="indice__nome" data-i18n="idxGaleria">Galeria</span><span
-                class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a></li>
+          <li>
+            <a href="#galeria"><span class="indice__nome" data-i18n="idxGaleria">Galeria</span><span
+                class="indice__pontos"></span><span class="indice__fol">fol. 6</span></a>
+            <ol class="indice__sub">
+              <li><a href="#favorita"><span class="indice__nome" data-i18n="idxFavorita">Obra Favorita</span><span
+                    class="indice__pontos"></span><span class="indice__fol">6v</span></a></li>
+            </ol>
+          </li>
           <li><a href="#correspondencia"><span class="indice__nome"
                 data-i18n="idxCorrespondencia">Correspondência</span><span class="indice__pontos"></span><span
                 class="indice__fol">fol. 7</span></a></li>
@@ -257,7 +268,8 @@
             <h3>AeroHub</h3>
             <p data-i18n="aeroDesc">Simulador de voo com Arduino, projeto final de Trabalho Interdisciplinar.</p>
             <p class="rolo__meta">C++</p>
-            <a href="https://github.com/Thz002/AeroHub" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> <span data-i18n="abrirGithub">Abrir no GitHub</span></a>
+            <a href="https://github.com/Thz002/AeroHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"
+                aria-hidden="true"></i> <span data-i18n="abrirGithub">Abrir no GitHub</span></a>
           </article>
         </div>
       </div>
@@ -268,23 +280,44 @@
       <div class="folio__texto">
         <p class="folio__num">fol. 6r</p>
         <h2 id="t-galeria" data-i18n="galTitulo">Galeria</h2>
-        <p class="folio__intro" data-i18n="galIntro">Pinturas antigas em domínio público do Art Institute of Chicago.
-          Escolha um tema para ver as obras.</p>
-        <div class="temas" role="group" aria-label="Tema das pinturas" data-i18n-aria="temasAria">
-          <button type="button" class="tema" data-tema="madonna" aria-pressed="true"
-            data-i18n="temaMadonna">Madonas</button>
-          <button type="button" class="tema" data-tema="saint" aria-pressed="false"
-            data-i18n="temaSaint">Santos</button>
-          <button type="button" class="tema" data-tema="annunciation" aria-pressed="false"
-            data-i18n="temaAnnunciation">Anunciação</button>
-          <button type="button" class="tema" data-tema="portrait" aria-pressed="false"
-            data-i18n="temaPortrait">Retratos</button>
-          <button type="button" class="tema" data-tema="landscape" aria-pressed="false"
-            data-i18n="temaLandscape">Paisagens</button>
+        <p class="folio__intro" data-i18n="galIntro">Obras-primas em domínio público do Metropolitan Museum of Art, de
+          Nova York. Escolha um pintor para ver as obras.</p>
+        <!-- nomes de pintores são iguais em português e inglês, então os botões não precisam de tradução -->
+        <div class="temas" role="group" aria-label="Pintores" data-i18n-aria="temasAria">
+          <button type="button" class="tema" data-tema="vangogh" aria-pressed="true">Van Gogh</button>
+          <button type="button" class="tema" data-tema="rembrandt" aria-pressed="false">Rembrandt</button>
+          <button type="button" class="tema" data-tema="vermeer" aria-pressed="false">Vermeer</button>
+          <button type="button" class="tema" data-tema="ticiano" aria-pressed="false">Ticiano</button>
+          <button type="button" class="tema" data-tema="goya" aria-pressed="false">Goya</button>
         </div>
 
         <!-- FERRAMENTA (próximo passo): a API do museu vai colocar as pinturas aqui -->
         <div class="quadros" id="quadros"></div>
+      </div>
+    </section>
+
+    <!-- ========== OBRA FAVORITA ========== -->
+    <section class="folio folio--largo" id="favorita" aria-labelledby="t-favorita">
+      <div class="folio__texto">
+        <p class="folio__num">fol. 6v</p>
+        <h2 id="t-favorita" data-i18n="favTitulo">A Obra Favorita</h2>
+        <p class="folio__intro" data-i18n="favIntro">O escritor deste códice possui uma obra a qual julga sua favorita.</p>
+
+        <!-- a imagem fica salva no projeto (domínio público, via Wikimedia Commons): não depende de API -->
+        <figure class="favorita">
+          <span class="quadro__moldura favorita__moldura">
+            <img src="assets/pinturas/noite-estrelada.jpg"
+              alt="Céu noturno em redemoinhos azuis, com estrelas e uma lua amarelas, sobre uma pequena vila; à esquerda, um cipreste escuro sobe até o céu"
+              data-i18n-alt="favAlt" width="1280" height="1014" loading="lazy">
+          </span>
+          <figcaption class="favorita__legenda">
+            <strong data-i18n="favObra">A Noite Estrelada</strong>
+            <em>Vincent van Gogh, 1889</em>
+            <span data-i18n="favLocal">Óleo sobre tela · Museum of Modern Art (MoMA), Nova York</span>
+            <span class="favorita__nota" data-i18n="favNota">Pintada em Saint-Rémy-de-Provence, mostra a vista da janela
+              do quarto de Van Gogh no asilo, com uma vila que ele imaginou.</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 

@@ -25,6 +25,7 @@ const traducoes = {
   idxAnatomia: "Anatomical Studies",
   idxPergaminhos: "Scrolls",
   idxGaleria: "Gallery",
+  idxFavorita: "Favorite Work",
   idxCorrespondencia: "Correspondence",
   engLegenda: "Study of a gear train with 24, 16 and 10 teeth. The middle wheel turns one and a half times for every turn of the largest.",
 
@@ -83,12 +84,13 @@ const traducoes = {
   abrirGithub: "Open on GitHub",
 
   galTitulo: "Gallery",
-  galIntro: "Old paintings in the public domain from the Art Institute of Chicago. Pick a theme to see the works.",
-  temaMadonna: "Madonnas",
-  temaSaint: "Saints",
-  temaAnnunciation: "Annunciation",
-  temaPortrait: "Portraits",
-  temaLandscape: "Landscapes",
+  galIntro: "Public-domain masterpieces from the Metropolitan Museum of Art in New York. Pick a painter to see the works.",
+
+  favTitulo: "The Favorite Work",
+  favIntro: "The writer of this codex keeps one work as a personal favorite.",
+  favObra: "The Starry Night",
+  favLocal: "Oil on canvas · Museum of Modern Art (MoMA), New York",
+  favNota: "Painted in Saint-Rémy-de-Provence, it shows the view from Van Gogh's window at the asylum, with a village he imagined.",
 
   corTitulo: "Correspondence",
   corSaudacao: "Dear reader,",
@@ -106,12 +108,13 @@ const traducoes = {
   idiomaGrupo: "Language",
   indiceAria: "Contents",
   margemAria: "Notes",
-  temasAria: "Painting theme",
+  temasAria: "Painters",
   lacreAria: "Open my GitHub",
   engAlt: "Drawing of three meshing gears",
   propAlt: "Human figure inscribed in a square and a circle",
   asaAlt: "Study of a jointed wing with ribs and a membrane",
-  artAlt: "Study of an artery with the pressure wave and a cross-section"
+  artAlt: "Study of an artery with the pressure wave and a cross-section",
+  favAlt: "A night sky of swirling blue, with yellow stars and moon, over a small village; on the left, a dark cypress rises into the sky"
 };
 
 // Frases que o JavaScript escreve na tela (não estão no HTML)
@@ -130,7 +133,10 @@ const frases = {
     formEnviado: "Mensagem enviada! Obrigado pelo contato.",
     atualizado: "atualizado em",
     abrirGithub: "Abrir no GitHub",
-    semDescricao: "Sem descrição."
+    galCarregando: "Buscando pinturas no museu...",
+    galErro: "O museu não respondeu agora. Tente outro tema ou recarregue a página.",
+    galVazia: "Nenhuma pintura encontrada neste tema.",
+    artistaDesconhecido: "Artista desconhecido"
   },
   en: {
     repoGithub: "Repository on GitHub",
@@ -146,7 +152,10 @@ const frases = {
     formEnviado: "Message sent! Thanks for reaching out.",
     atualizado: "updated",
     abrirGithub: "Open on GitHub",
-    semDescricao: "No description."
+    galCarregando: "Looking for paintings in the museum...",
+    galErro: "The museum didn't respond. Try another theme or reload the page.",
+    galVazia: "No paintings found for this theme.",
+    artistaDesconhecido: "Unknown artist"
   }
 };
 
@@ -317,10 +326,11 @@ function trocarIdioma(novo) {
   });
 
   // partes que o JS desenha também precisam ser refeitas
-  desenharLinha("maquinas");
+  desenharLinha("maquinas");  
   desenharLinha("anatomia");
   traduzirErrosDoFormulario();
   desenharRepositorios();
+  if (pinturas.length > 0) desenharGaleria();
 
   // lembra a escolha para a próxima visita
   try {
@@ -478,7 +488,97 @@ function desenharRepositorios() {
   if (repositorios.length === 0) return; // a API ainda não respondeu
   listaRolos.innerHTML = "";
   repositorios.forEach((repo) => listaRolos.append(criarRolo(repo)));
+  if (window.ScrollTrigger) ScrollTrigger.refresh(); // recalcula as posições das animações
 }
+
+// ---------- 8. GALERIA (API do Metropolitan Museum of Art) ----------
+// A busca por texto da API do Met foi desativada, então as obras foram escolhidas a dedo:
+// cada pintor é uma lista com o número (objectID) de cada obra no museu.
+// Todas estão em domínio público e têm foto (o Met não libera as fotos do Monet).
+const colecoes = {
+  vangogh: [436535, 436532, 436528, 436524, 437980, 436529],
+  rembrandt: [437394, 437397, 437398, 437393, 437385, 437399],
+  vermeer: [437881, 437878, 437880, 437879, 437877],
+  ticiano: [437824, 437826, 437825, 437827],
+  goya: [436548, 436545, 459090, 436554]
+};
+
+const galeria = document.getElementById("quadros");
+const botoesTema = document.querySelectorAll(".tema");
+let pinturas = [];     // obras que a API devolveu
+let pedidoAtual = 0;   // conta os pedidos, pra ignorar respostas de um tema antigo
+
+async function buscarObra(id) {
+  const resposta = await fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + id);
+  if (!resposta.ok) throw new Error("Museu respondeu " + resposta.status);
+  return resposta.json();
+}
+
+async function carregarPinturas(tema) {
+  const meuPedido = ++pedidoAtual;
+  galeria.innerHTML = `<p class="aviso">${frase("galCarregando")}</p>`;
+
+  try {
+    // pede todas as obras do pintor ao mesmo tempo e espera todas responderem
+    const respostas = await Promise.allSettled(colecoes[tema].map(buscarObra));
+
+    // se a pessoa clicou em outro pintor enquanto esperava, ignora esta resposta
+    if (meuPedido !== pedidoAtual) return;
+
+    // fica só com as obras que chegaram e têm foto (se uma falhar, as outras aparecem)
+    pinturas = respostas
+      .filter((r) => r.status === "fulfilled" && r.value.primaryImageSmall)
+      .map((r) => r.value);
+    if (pinturas.length === 0) throw new Error("Nenhuma obra chegou");
+    desenharGaleria();
+  } catch (erro) {
+    if (meuPedido !== pedidoAtual) return;
+    galeria.innerHTML = `<p class="aviso">${frase("galErro")}</p>`;
+  }
+}
+
+function criarQuadro(obra) {
+  const quadro = criar("a", "quadro");
+  quadro.href = obra.objectURL; // abre a obra no site do museu
+  quadro.target = "_blank";
+  quadro.rel = "noopener";
+
+  const moldura = criar("span", "quadro__moldura");
+  const tela = criar("span", "quadro__tela");
+  const img = document.createElement("img");
+  img.src = obra.primaryImageSmall;
+  img.alt = obra.title;
+  img.loading = "lazy";
+  tela.append(img);
+  moldura.append(tela);
+
+  // o autor vem como "Rembrandt (Rembrandt van Rijn)": ficamos só com o nome, antes do parêntese
+  const artista = obra.artistDisplayName ? obra.artistDisplayName.split(" (")[0] : frase("artistaDesconhecido");
+  const legenda = criar("span", "quadro__legenda");
+  legenda.append(criar("strong", null, obra.title), criar("em", null, artista + ", " + obra.objectDate));
+
+  quadro.append(moldura, legenda);
+  return quadro;
+}
+
+function desenharGaleria() {
+  if (pinturas.length === 0) {
+    galeria.innerHTML = `<p class="aviso">${frase("galVazia")}</p>`;
+    return;
+  }
+  galeria.innerHTML = "";
+  pinturas.forEach((obra) => galeria.append(criarQuadro(obra)));
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}
+
+// cada botão de tema busca pinturas novas
+botoesTema.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    botoesTema.forEach((b) => b.setAttribute("aria-pressed", "false"));
+    botao.setAttribute("aria-pressed", "true");
+    carregarPinturas(botao.dataset.tema); // "vangogh", "rembrandt"... vem do data-tema do HTML
+  });
+});
 
 
 // ---------- INÍCIO ----------
@@ -490,3 +590,4 @@ try {
 }
 trocarIdioma(idiomaSalvo);
 carregarRepositorios();
+carregarPinturas("vangogh");
