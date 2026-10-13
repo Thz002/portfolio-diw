@@ -126,7 +126,9 @@ const frases = {
     erroNome: "Escreva seu nome.",
     erroEmail: "Escreva um e-mail válido, como nome@exemplo.com.",
     erroMensagem: "A mensagem precisa de pelo menos 10 caracteres.",
-    formOk: "Tudo certo com os campos."
+    formEnviando: "Enviando...",
+    formEnviado: "Mensagem enviada! Obrigado pelo contato.",
+    formErro: "Não consegui enviar agora. Tente de novo em instantes."
   },
   en: {
     repoGithub: "Repository on GitHub",
@@ -138,7 +140,9 @@ const frases = {
     erroNome: "Please write your name.",
     erroEmail: "Please write a valid e-mail, like name@example.com.",
     erroMensagem: "The message needs at least 10 characters.",
-    formOk: "All fields look good."
+    formEnviando: "Sending...",
+    formEnviado: "Message sent! Thanks for reaching out.",
+    formErro: "I couldn't send it right now. Please try again in a moment."
   }
 };
 
@@ -388,18 +392,37 @@ for (const nomeDoCampo in regras) {
   });
 }
 
-formulario.addEventListener("submit", (evento) => {
+// endereço do formulário no Formspree
+const ENDERECO_FORMSPREE = "https://formspree.io/f/xbgdzknr";
+
+formulario.addEventListener("submit", async (evento) => {
   evento.preventDefault(); // não recarrega a página
   statusFormulario.textContent = "";
 
   if (!validarFormulario()) {
-    // leva o foco para o primeiro campo com erro
     formulario.querySelector("[aria-invalid='true']").focus();
     return;
   }
 
-  // FERRAMENTA (próximo passo): enviar a mensagem por e-mail
-  statusFormulario.textContent = frase("formOk");
+  const botao = formulario.querySelector("button[type='submit']");
+  botao.disabled = true; // evita clicar duas vezes e mandar duas mensagens
+  statusFormulario.textContent = frase("formEnviando");
+
+  try {
+    const resposta = await fetch(ENDERECO_FORMSPREE, {
+      method: "POST",
+      body: new FormData(formulario),
+      headers: { Accept: "application/json" }
+    });
+    if (!resposta.ok) throw new Error("Formspree respondeu " + resposta.status);
+
+    formulario.reset(); // limpa os campos
+    statusFormulario.textContent = frase("formEnviado");
+  } catch (erro) {
+    statusFormulario.textContent = frase("formErro");
+  } finally {
+    botao.disabled = false;
+  }
 });
 
 
