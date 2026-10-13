@@ -4,7 +4,7 @@ Portfólio pessoal com tema de caderno medieval, inspirado nos códices de Leona
 
 ## Site publicado
 
-Hospedado no **[Netlify](https://www.netlify.com/)**: *link disponível após o primeiro deploy.*
+Hospedado no **[Netlify](https://darling-pothos-090b7c.netlify.app)**: *link disponível após o primeiro deploy.*
 
 ## Seções
 
