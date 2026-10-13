@@ -1,0 +1,1046 @@
+/* =========================================================
+   Códice de Thiago - estilos
+   Ideia do layout: um caderno aberto. Texto na coluna da
+   esquerda e anotações (desenhos) na margem da direita.
+   No celular a margem desce para depois do texto.
+   ========================================================= */
+
+/* ---------- 1. Cores e fontes ---------- */
+:root {
+  --velino: #ead9b0;          /* papel */
+  --velino-claro: #f4e8ca;
+  --velino-escuro: #cdb37b;
+  --tinta: #2a1d12;           /* texto principal */
+  --tinta-suave: #5e4630;
+  --sanguinea: #a3432a;       /* vermelho de giz, para destaques */
+  --sanguinea-clara: #c65d3e;
+  --sanguinea-escura: #6b2414;
+  --ouro: #a07a33;
+  --ouro-claro: #dcbc72;
+  --ouro-escuro: #5f4518;
+  --sombra: rgba(60, 38, 14, 0.28);
+
+  --f-titulo: "IM Fell English SC", Palatino, Georgia, serif;
+  --f-mao: "IM Fell English", Palatino, Georgia, serif;
+  --f-texto: "EB Garamond", Palatino, Georgia, serif;
+
+  --largura: 1120px;
+  --medida: 62ch;             /* largura boa para leitura */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-inline: 20px;
+  font-family: var(--f-texto);
+  font-size: 1.125rem;
+  line-height: 1.62;
+  color: var(--tinta);
+  background-color: var(--velino);
+  /* textura de papel feita com um filtro de ruído em SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011 0.017' numOctaves='4' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.28 0 0 0 0 0.1 0 0 0 0.2 0'/%3E%3C/filter%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23m)'/%3E%3Crect width='420' height='420' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* bordas da tela mais escuras, como papel velho */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 120% 95% at 50% 40%, transparent 52%, var(--sombra) 100%);
+}
+
+a {
+  color: var(--sanguinea);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--sanguinea-escura);
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sanguinea);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- 2. Botão de idioma ---------- */
+.idioma {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 30;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--tinta-suave);
+  border-radius: 999px;
+  background-color: var(--velino-claro);
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+.idioma button {
+  min-width: 44px;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--f-titulo);
+  font-size: 0.95rem;
+  color: var(--tinta);
+}
+
+.idioma button[aria-pressed="true"] {
+  background-color: var(--tinta);
+  color: var(--velino-claro);
+}
+
+/* ---------- 3. Frontispício (capa) ---------- */
+.frontispicio {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 56px 0 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 48px;
+  align-items: center;
+}
+
+.fr-sobre {
+  margin-bottom: 0.4rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--tinta-suave);
+}
+
+.fr-titulo {
+  font-family: var(--f-titulo);
+  line-height: 0.92;
+}
+
+.fr-titulo__a {
+  display: block;
+  font-size: clamp(3.6rem, 13vw, 7.2rem);
+}
+
+.fr-titulo__b {
+  display: block;
+  margin-top: 0.12em;
+  font-size: clamp(1.9rem, 6vw, 3.2rem);
+  color: var(--sanguinea);
+}
+
+.fr-lugar {
+  margin: 1.1rem 0 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.fr-lede {
+  max-width: 40ch;
+  margin-bottom: 1.8rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+/* índice com pontinhos, como sumário de livro */
+.indice {
+  max-width: 28rem;
+}
+
+.indice__titulo {
+  margin-bottom: 0.35rem;
+  font-family: var(--f-titulo);
+  font-size: 1.1rem;
+  color: var(--sanguinea);
+}
+
+.indice ol {
+  list-style: none;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.indice a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.indice a:hover .indice__nome {
+  color: var(--sanguinea);
+}
+
+.indice__pontos {
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--tinta-suave);
+  transform: translateY(-0.3em);
+}
+
+.indice__fol {
+  font-family: var(--f-mao);
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.indice .indice__sub {
+  padding-left: 1.3rem;
+}
+
+.indice__sub .indice__nome {
+  font-family: var(--f-mao);
+  font-style: italic;
+}
+
+.fr-desenho img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.fr-desenho figcaption {
+  margin-top: 0.6rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 4. Fólios (as seções) ---------- */
+.folio {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 64px 0;
+  border-top: 1px solid var(--velino-escuro);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: 32px 64px;
+  align-items: start;
+}
+
+/* seção sem margem de desenhos: uma coluna só */
+.folio--largo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.folio__texto {
+  min-width: 0;
+  max-width: var(--medida);
+}
+
+.folio--largo .folio__texto {
+  max-width: none;
+}
+
+.folio__intro {
+  max-width: var(--medida);
+}
+
+.folio__num {
+  margin-bottom: 0.15rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--sanguinea);
+}
+
+/* :where() deixa essas regras "fracas", assim as classes específicas ganham delas */
+:where(.folio) h2 {
+  margin-bottom: 1.2rem;
+  font-family: var(--f-titulo);
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  line-height: 1.05;
+}
+
+:where(.folio) h3 {
+  margin: 2rem 0 0.5rem;
+  font-family: var(--f-titulo);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+:where(.folio) p {
+  margin-bottom: 1rem;
+}
+
+/* letra capitular vermelha no primeiro parágrafo */
+.capitular::first-letter {
+  float: left;
+  padding: 0.06em 0.1em 0 0;
+  font-family: var(--f-titulo);
+  font-size: 4.2em;
+  line-height: 0.8;
+  color: var(--sanguinea);
+}
+
+/* ---------- 5. Sobre mim ---------- */
+.ficha {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.3rem 1.2rem;
+  margin: 1.6rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--velino-escuro);
+  border-bottom: 1px solid var(--velino-escuro);
+}
+
+.ficha dt {
+  font-family: var(--f-titulo);
+  color: var(--tinta-suave);
+}
+
+.inventario {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0;
+}
+
+.inventario li:not(:last-child)::after {
+  content: "·";
+  margin: 0 0.7rem;
+  color: var(--ouro);
+}
+
+/* ---------- 6. Margem: desenhos e escrita espelhada ---------- */
+.margem {
+  min-width: 0;
+  display: grid;
+  gap: 1.8rem;
+  align-content: start;
+  padding-top: 2.6rem;
+}
+
+.estudo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.estudo figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: var(--tinta-suave);
+}
+
+.espelho {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--tinta);
+}
+
+/* scaleX(-1) espelha o texto; a classe muda pelo aria-pressed no JS */
+.espelho span {
+  display: inline-block;
+  transform: scaleX(-1);
+  transition: transform 0.7s ease;
+}
+
+.espelho[aria-pressed="true"] span {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) {
+  .espelho:hover span {
+    transform: scaleX(1);
+  }
+}
+
+.espelho__dica {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 7. Vivências (livro de registros) ---------- */
+.registro {
+  list-style: none;
+  margin-top: 1.8rem;
+}
+
+.registro__item {
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  gap: 0.3rem 2.5rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--velino-escuro);
+}
+
+.registro__item:last-child {
+  border-bottom: 1px solid var(--velino-escuro);
+}
+
+.registro__periodo {
+  margin: 0;
+  padding-top: 0.15rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--sanguinea);
+}
+
+.registro__corpo {
+  min-width: 0;
+  max-width: var(--medida);
+}
+
+.registro__corpo h3 {
+  margin: 0;
+}
+
+.registro__instituicao {
+  margin: 0.15rem 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.registro__corpo p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- 8. Meus Estudos (dois cadernos) ---------- */
+.folio--mega {
+  display: block;
+}
+
+.folio__cab {
+  max-width: var(--medida);
+}
+
+.folio__cab p:last-child {
+  margin-bottom: 0;
+}
+
+.caderno {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: 32px 64px;
+  align-items: start;
+  margin-top: 2.6rem;
+  padding-top: 2.6rem;
+  border-top: 1px dashed var(--velino-escuro);
+}
+
+.caderno__titulo {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.75rem, 4.6vw, 2.3rem);
+  line-height: 1.1;
+}
+
+/* linha do tempo: um traço vertical com uma bolinha por projeto */
+.linha {
+  position: relative;
+  margin-top: 1.8rem;
+  padding-left: 2.3rem;
+}
+
+.linha__traco {
+  position: absolute;
+  left: calc(0.575rem - 1px);
+  top: 0.6rem;
+  bottom: 0.4rem;
+  width: 2px;
+  background-color: var(--tinta);
+  transform-origin: top center;
+}
+
+.linha > ol {
+  list-style: none;
+  display: grid;
+  gap: 2.4rem;
+}
+
+.marco {
+  position: relative;
+  min-width: 0;
+}
+
+.marco::before {
+  content: "";
+  position: absolute;
+  left: -2.3rem;
+  top: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  background-color: var(--velino);
+  box-shadow: inset 0 0 0 3px var(--velino), inset 0 0 0 10px var(--tinta);
+}
+
+/* projetos em andamento ficam em vermelho */
+.marco--andamento::before {
+  border-color: var(--sanguinea);
+  box-shadow: inset 0 0 0 3px var(--velino), inset 0 0 0 10px var(--sanguinea);
+}
+
+.marco__data {
+  margin-bottom: 0.1rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--sanguinea);
+}
+
+.marco h4 {
+  margin-bottom: 0.4rem;
+  font-family: var(--f-titulo);
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.marco p {
+  margin-bottom: 0.6rem;
+}
+
+.marco__materiais {
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+}
+
+.marco__rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1rem;
+}
+
+.marco__sem {
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.estado {
+  display: inline-block;
+  padding: 0 0.6rem;
+  border: 1px solid var(--sanguinea);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--sanguinea);
+}
+
+/* imagem/GIF do projeto funcionando */
+.prancha {
+  max-width: 30rem;
+  margin: 0.8rem 0 0.9rem;
+}
+
+.prancha img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--tinta-suave);
+  box-shadow: 0 4px 10px var(--sombra);
+}
+
+.prancha figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--tinta-suave);
+}
+
+.proximos__titulo {
+  margin: 2.6rem 0 0.6rem;
+  font-family: var(--f-titulo);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.planos {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.planos li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.planos li::before {
+  content: "❧";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  font-size: 0.9rem;
+  color: var(--ouro);
+}
+
+.planos strong {
+  font-family: var(--f-titulo);
+  font-weight: 400;
+}
+
+/* ---------- 9. Pergaminhos (repositórios) ---------- */
+.rolos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 2.4rem 1.8rem;
+  margin-top: 2rem;
+  padding: 0 7px;
+}
+
+.rolo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 1.5rem 1.2rem 1.3rem;
+  background-color: var(--velino-claro);
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+/* as duas varetas do pergaminho, em cima e embaixo */
+.rolo::before,
+.rolo::after {
+  content: "";
+  position: absolute;
+  left: -7px;
+  right: -7px;
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, var(--velino-escuro), var(--velino-claro) 45%, var(--ouro) 100%);
+  box-shadow: 0 1px 3px var(--sombra);
+}
+
+.rolo::before { top: -7px; }
+.rolo::after { bottom: -7px; }
+
+.rolo h3 {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.rolo p {
+  margin: 0;
+}
+
+.rolo .rolo__meta {
+  margin-top: auto;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 10. Galeria ---------- */
+.temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 2rem;
+}
+
+.tema {
+  padding: 0.35rem 0.95rem;
+  border: 1px solid var(--tinta-suave);
+  border-radius: 2px;
+  background: transparent;
+  font-family: var(--f-mao);
+  font-size: 1.02rem;
+  color: var(--tinta);
+}
+
+.tema:hover {
+  border-color: var(--sanguinea);
+  color: var(--sanguinea);
+}
+
+.tema[aria-pressed="true"] {
+  background-color: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--velino-claro);
+}
+
+.quadros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 2.2rem 1.8rem;
+}
+
+/* moldura dourada */
+.quadro__moldura {
+  display: block;
+  padding: 10px;
+  background: linear-gradient(135deg, var(--ouro-claro), var(--ouro) 30%, var(--ouro-escuro) 52%, var(--ouro-claro) 78%, var(--ouro));
+  box-shadow: inset 0 0 0 1px var(--ouro-escuro), 0 8px 16px var(--sombra);
+  transition: transform 0.35s;
+}
+
+.quadro__tela {
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--tinta);
+}
+
+.quadro__tela img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.28);
+  transition: filter 0.5s;
+}
+
+.quadro:hover .quadro__moldura {
+  transform: translateY(-4px);
+}
+
+.quadro:hover .quadro__tela img {
+  filter: none;
+}
+
+.quadro__legenda {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+
+.quadro__legenda strong {
+  display: block;
+  font-family: var(--f-mao);
+  font-weight: 400;
+  font-size: 1.05rem;
+}
+
+.quadro__legenda em {
+  display: block;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 11. Correspondência (contato) ---------- */
+.correspondencia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  margin-top: 1.4rem;
+}
+
+.carta {
+  position: relative;
+  padding: 2rem 1.8rem 2.6rem;
+  background-color: var(--velino-claro);
+  box-shadow: 0 4px 12px var(--sombra);
+  transform: rotate(-0.6deg);
+}
+
+.carta p {
+  margin-bottom: 0.9rem;
+}
+
+.carta .carta__assinatura {
+  margin-top: 1.2rem;
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1.7rem;
+}
+
+.contato-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.4rem 0 1.2rem;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.contato-github:hover {
+  color: var(--tinta);
+}
+
+.contato-github__icone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  font-size: 1.9rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contato-github:hover .contato-github__icone {
+  background-color: var(--tinta);
+  color: var(--velino-claro);
+}
+
+.contato-github__texto {
+  display: grid;
+  line-height: 1.25;
+}
+
+.contato-github__rotulo {
+  font-family: var(--f-titulo);
+  font-size: 1.4rem;
+}
+
+.contato-github__url {
+  font-family: var(--f-mao);
+  font-style: italic;
+  color: var(--sanguinea);
+}
+
+/* lacre de cera */
+.lacre {
+  position: absolute;
+  right: -12px;
+  bottom: -20px;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: 50% 47% 52% 49%;
+  background: radial-gradient(circle at 35% 30%, var(--sanguinea-clara), var(--sanguinea) 45%, var(--sanguinea-escura) 100%);
+  box-shadow: inset 0 0 0 7px rgba(0, 0, 0, 0.13), 0 3px 7px var(--sombra);
+  font-family: var(--f-titulo);
+  font-size: 2.1rem;
+  color: var(--velino-claro);
+  text-decoration: none;
+  transition: transform 0.35s;
+}
+
+.lacre:hover {
+  color: var(--velino-claro);
+  transform: rotate(-14deg) scale(1.06);
+}
+
+/* formulário */
+.formulario {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.formulario .formulario__titulo {
+  margin: 0;
+}
+
+.campo {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.campo label {
+  font-family: var(--f-titulo);
+  color: var(--tinta-suave);
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--tinta-suave);
+  border-radius: 2px;
+  background-color: var(--velino-claro);
+  font: inherit;
+  color: var(--tinta);
+}
+
+.campo textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: 2px solid var(--sanguinea);
+  outline-offset: 1px;
+}
+
+.campo--erro input,
+.campo--erro textarea {
+  border-color: var(--sanguinea);
+  background-color: #f7e6d6;
+}
+
+.campo .campo__erro {
+  margin: 0;
+  min-height: 1.3em;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--sanguinea);
+}
+
+.botao {
+  justify-self: start;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 2px;
+  background-color: var(--tinta);
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  color: var(--velino-claro);
+  transition: background-color 0.3s;
+}
+
+.botao:hover {
+  background-color: var(--sanguinea);
+}
+
+.formulario .formulario__status {
+  margin: 0;
+  font-style: italic;
+}
+
+/* ---------- 12. Rodapé ---------- */
+.colofao {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--velino-escuro);
+  font-family: var(--f-mao);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+.colofao p {
+  max-width: 52ch;
+  margin: 0 auto 0.6rem;
+}
+
+.colofao__ornamento {
+  font-size: 1.6rem;
+  color: var(--ouro);
+}
+
+/* ---------- 13. Telas menores ---------- */
+@media (max-width: 860px) {
+  .frontispicio {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 64px 0 36px;
+  }
+
+  .fr-desenho img {
+    max-width: 340px;
+  }
+
+  .folio,
+  .caderno,
+  .correspondencia {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .folio {
+    padding: 44px 0;
+  }
+
+  .correspondencia {
+    gap: 48px;
+  }
+
+  .margem {
+    max-width: 30rem;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .registro__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-inline: 16px;
+    font-size: 1.08rem;
+  }
+
+  .fr-lede {
+    font-size: 1.15rem;
+  }
+
+  .linha {
+    padding-left: 2rem;
+  }
+
+  .marco::before {
+    left: -2rem;
+  }
+
+  .carta {
+    padding: 1.6rem 1.3rem 2.6rem;
+  }
+
+  .lacre {
+    right: -6px;
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+}
+
+/* quem pediu menos animação no sistema não vê transições */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

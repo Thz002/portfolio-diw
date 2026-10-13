@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 42 270 287" width="270" height="287">
+<style>
+    .base > *, .tinta > * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .base > * { stroke: rgba(80, 64, 48, 0.26); stroke-width: 1.1; }
+    .tinta > * { stroke: #2a1d12; stroke-width: 1.4; }
+    .sanguinea .tinta > * { stroke: #a3432a; }
+    .construcao { fill: none; stroke: rgba(80, 64, 48, 0.26); stroke-width: 1; stroke-dasharray: 3 5; }
+    .tremor { filter: url(#tremor); }
+</style>
+<filter id="tremor">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+</filter>
+  <line class="construcao" x1="25.0" y1="185.0" x2="275.0" y2="185.0"/>
+  <line class="construcao" x1="150.0" y1="52.0" x2="150.0" y2="318.0"/>
+  <line class="construcao" x1="260.0" y1="90.0" x2="40.0" y2="310.0"/>
+  <line class="construcao" x1="40.0" y1="90.0" x2="260.0" y2="310.0"/>
+  <g class="base tremor">
+    <path d="M40 90 H260 V310 H40 Z"/>
+    <circle cx="150.0" cy="185.0" r="125.0"/>
+    <circle cx="150.0" cy="106.0" r="15.0"/>
+    <line x1="150.0" y1="121.0" x2="150.0" y2="200.0"/>
+    <line x1="42.0" y1="135.0" x2="258.0" y2="135.0"/>
+    <line x1="150.0" y1="200.0" x2="138.0" y2="308.0"/>
+    <line x1="150.0" y1="200.0" x2="162.0" y2="308.0"/>
+    <line x1="150.0" y1="135.0" x2="47.6" y2="113.3"/>
+    <line x1="150.0" y1="135.0" x2="252.4" y2="113.3"/>
+    <line x1="150.0" y1="200.0" x2="97.2" y2="298.3"/>
+    <line x1="150.0" y1="200.0" x2="202.8" y2="298.3"/>
+    <circle cx="150.0" cy="185.0" r="2.5"/>
+    <line x1="40.0" y1="310.0" x2="40.0" y2="319.0"/>
+    <line x1="95.0" y1="310.0" x2="95.0" y2="319.0"/>
+    <line x1="150.0" y1="310.0" x2="150.0" y2="319.0"/>
+    <line x1="205.0" y1="310.0" x2="205.0" y2="319.0"/>
+    <line x1="260.0" y1="310.0" x2="260.0" y2="319.0"/>
+  </g>
+  <g class="tinta tremor">
+    <path d="M40 90 H260 V310 H40 Z"/>
+    <circle cx="150.0" cy="185.0" r="125.0"/>
+    <circle cx="150.0" cy="106.0" r="15.0"/>
+    <line x1="150.0" y1="121.0" x2="150.0" y2="200.0"/>
+    <line x1="42.0" y1="135.0" x2="258.0" y2="135.0"/>
+    <line x1="150.0" y1="200.0" x2="138.0" y2="308.0"/>
+    <line x1="150.0" y1="200.0" x2="162.0" y2="308.0"/>
+    <line x1="150.0" y1="135.0" x2="47.6" y2="113.3"/>
+    <line x1="150.0" y1="135.0" x2="252.4" y2="113.3"/>
+    <line x1="150.0" y1="200.0" x2="97.2" y2="298.3"/>
+    <line x1="150.0" y1="200.0" x2="202.8" y2="298.3"/>
+    <circle cx="150.0" cy="185.0" r="2.5"/>
+    <line x1="40.0" y1="310.0" x2="40.0" y2="319.0"/>
+    <line x1="95.0" y1="310.0" x2="95.0" y2="319.0"/>
+    <line x1="150.0" y1="310.0" x2="150.0" y2="319.0"/>
+    <line x1="205.0" y1="310.0" x2="205.0" y2="319.0"/>
+    <line x1="260.0" y1="310.0" x2="260.0" y2="319.0"/>
+  </g>
+</svg>

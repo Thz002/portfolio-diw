@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 4 348 243" width="348" height="243">
+<style>
+    .base > *, .tinta > * { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .base > * { stroke: rgba(80, 64, 48, 0.26); stroke-width: 1.1; }
+    .tinta > * { stroke: #2a1d12; stroke-width: 1.4; }
+    .sanguinea .tinta > * { stroke: #a3432a; }
+    .construcao { fill: none; stroke: rgba(80, 64, 48, 0.26); stroke-width: 1; stroke-dasharray: 3 5; }
+    .tremor { filter: url(#tremor); }
+</style>
+<filter id="tremor">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+</filter>
+  <line class="construcao" x1="30" y1="20" x2="350" y2="20"/>
+  <line class="construcao" x1="30" y1="14" x2="30" y2="26"/>
+  <line class="construcao" x1="350" y1="14" x2="350" y2="26"/>
+  <g class="base tremor">
+    <path d="M30 170 Q170 40 350 60"/>
+    <line x1="64.2" y1="141.0" x2="115.3" y2="220.5"/>
+    <line x1="99.5" y1="116.2" x2="140.2" y2="195.6"/>
+    <line x1="136.0" y1="95.8" x2="166.3" y2="174.0"/>
+    <line x1="173.6" y1="79.8" x2="193.9" y2="155.5"/>
+    <line x1="212.4" y1="68.0" x2="223.5" y2="140.2"/>
+    <line x1="252.3" y1="60.6" x2="255.2" y2="128.1"/>
+    <line x1="293.4" y1="57.4" x2="289.4" y2="119.5"/>
+    <line x1="335.7" y1="58.6" x2="326.3" y2="114.7"/>
+    <path d="M30 170 Q60 205 115.3 220.5 Q127.8 194.1 140.2 195.6 Q153.2 170.8 166.3 174.0 Q180.1 150.7 193.9 155.5 Q208.7 133.8 223.5 140.2 Q239.3 120.1 255.2 128.1 Q272.3 109.8 289.4 119.5 Q307.9 103.1 326.3 114.7 L350 60"/>
+    <circle cx="30.0" cy="170.0" r="7.0"/>
+    <line x1="30.0" y1="177.0" x2="30.0" y2="221.0"/>
+    <circle cx="30.0" cy="229.0" r="8.0"/>
+  </g>
+  <g class="tinta tremor">
+    <path d="M30 170 Q170 40 350 60"/>
+    <line x1="64.2" y1="141.0" x2="115.3" y2="220.5"/>
+    <line x1="99.5" y1="116.2" x2="140.2" y2="195.6"/>
+    <line x1="136.0" y1="95.8" x2="166.3" y2="174.0"/>
+    <line x1="173.6" y1="79.8" x2="193.9" y2="155.5"/>
+    <line x1="212.4" y1="68.0" x2="223.5" y2="140.2"/>
+    <line x1="252.3" y1="60.6" x2="255.2" y2="128.1"/>
+    <line x1="293.4" y1="57.4" x2="289.4" y2="119.5"/>
+    <line x1="335.7" y1="58.6" x2="326.3" y2="114.7"/>
+    <path d="M30 170 Q60 205 115.3 220.5 Q127.8 194.1 140.2 195.6 Q153.2 170.8 166.3 174.0 Q180.1 150.7 193.9 155.5 Q208.7 133.8 223.5 140.2 Q239.3 120.1 255.2 128.1 Q272.3 109.8 289.4 119.5 Q307.9 103.1 326.3 114.7 L350 60"/>
+    <circle cx="30.0" cy="170.0" r="7.0"/>
+    <line x1="30.0" y1="177.0" x2="30.0" y2="221.0"/>
+    <circle cx="30.0" cy="229.0" r="8.0"/>
+  </g>
+</svg>
