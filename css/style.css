@@ -1234,20 +1234,27 @@ img {
   font-size: 1.7rem;
 }
 
-.contato-github {
+.contatos {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  margin: 0.4rem 0 1.2rem;
+}
+
+.contato {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  margin: 0.4rem 0 1.2rem;
+  max-width: 100%;
   color: var(--tinta);
   text-decoration: none;
 }
 
-.contato-github:hover {
+.contato:hover {
   color: var(--tinta);
 }
 
-.contato-github__icone {
+.contato__icone {
   display: grid;
   place-items: center;
   flex: none;
@@ -1259,25 +1266,27 @@ img {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.contato-github:hover .contato-github__icone {
+.contato:hover .contato__icone {
   background-color: var(--tinta);
   color: var(--velino-claro);
 }
 
-.contato-github__texto {
+.contato__texto {
   display: grid;
+  min-width: 0;
   line-height: 1.25;
 }
 
-.contato-github__rotulo {
+.contato__rotulo {
   font-family: var(--f-titulo);
   font-size: 1.4rem;
 }
 
-.contato-github__url {
+.contato__url {
   font-family: var(--f-mao);
   font-style: italic;
   color: var(--sanguinea);
+  overflow-wrap: anywhere;
 }
 
 .lacre {

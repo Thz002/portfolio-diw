@@ -49,7 +49,7 @@ Hospedado no **[Netlify](https://darling-pothos-090b7c.netlify.app)**: *link dis
 4. No **Gabinete de Curiosidades**, clique numa carta para virá-la. Nas **Equações Favoritas**, o verso de cada carta explica o que a fórmula significa na medicina, na física e na computação.
 5. Na **Galeria**, escolha um pintor para ver as obras. Clique numa pintura para abrir a página dela no museu.
 6. Toque nas frases escritas ao contrário, na margem, para lê-las.
-7. Na **Correspondência**, preencha o formulário para me mandar uma mensagem.
+7. Na **Correspondência**, preencha o formulário para me mandar uma mensagem, ou clique no meu e-mail para escrever pelo seu app de e-mail.
 
 As animações respeitam a opção "reduzir movimento" do sistema. Com ela ligada, o site aparece sem animações e sem o manômetro.
 
